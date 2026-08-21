@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidè - Lavage Auto, Pressing et Entretien</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --bg-light-blue: #f4f7fe;
+        }
+        body {
+            background-color: #fafbfc;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .badge-premium {
+            background-color: #eef4ff;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .hero-section {
+            padding: 3rem 0;
+        }
+        .hero-card-img {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .estimation-box {
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .service-card {
+            border: 1px solid #eef0f3;
+            border-radius: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: #ffffff;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .badge-populaire {
+            background-color: #20c997;
+            color: white;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-white border-bottom py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-droplet-fill"></i> Bidè
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link fw-semibold active text-primary" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold text-secondary" href="#">Lavage Auto</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold text-secondary" href="#">Pressing</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold text-secondary" href="#">Entretien</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold text-secondary" href="#">Suivi de Commande</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary rounded-pill px-4">Réserver avec Bidè</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                    <span class="badge badge-premium px-3 py-2 rounded-pill mb-3">
+                        <i class="bi bi-star-fill text-warning me-1"></i> PREMIUM CARE SERVICES
+                    </span>
+                    <h1 class="display-5 fw-bold text-dark mb-3">
+                        Vos services de <span class="text-primary">Lavage Auto</span>, Pressing et Entretien en un clic.
+                    </h1>
+                    <p class="text-muted lead mb-4 fs-6">
+                        Prise de rendez-vous rapide au centre ou collecte & livraison directement à votre domicile. L'excellence au rendez-vous.
+                    </p>
+
+                    <!-- Estimation Express Box -->
+                    <div class="estimation-box p-4 border">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="fw-bold text-uppercase fs-7 text-muted">Estimation Express</span>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <button class="btn btn-outline-primary w-100 active py-2">Lavage Auto</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-light text-secondary w-100 py-2">En Centre</button>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded">
+                            <div>
+                                <small class="text-muted d-block">Estimation à partir de</small>
+                                <span class="fw-bold fs-5">5 000 FCFA</span>
+                            </div>
+                            <a href="#" class="btn btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="position-relative hero-card-img shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80" alt="Lavage Auto" class="img-fluid w-100">
+                        <div class="position-absolute bottom-0 start-0 m-3 p-3 bg-white rounded-3 shadow-sm d-flex align-items-center gap-2">
+                            <i class="bi bi-patch-check-fill text-primary fs-4"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Professionnels Certifiés</h6>
+                                <small class="text-muted">Garantie satisfaction 100%</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="mb-4">
+                <span class="badge bg-light text-primary fw-semibold mb-2">NOS PÔLES</span>
+                <h2 class="fw-bold">L'expertise Bidè à votre service</h2>
+                <p class="text-muted">Des prestations haut de gamme adaptées à votre rythme de vie. Sélectionnez le service.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Carte 1 -->
+                <div class="col-md-4">
+                    <div class="card service-card h-100 p-4">
+                        <div class="mb-3 text-primary fs-3">
+                            <i class="bi bi-car-front-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2">Bidè Auto</h4>
+                        <p class="text-muted fs-7 mb-4">Lavage complet intérieur et extérieur, lustrage et traitements spécifiques pour un véhicule impeccable.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
+                            <div>
+                                <small class="text-muted d-block">À partir de</small>
+                                <span class="fw-bold text-dark">5 000 FCFA</span>
+                            </div>
+                            <a href="#" class="btn btn-light rounded-pill btn-sm text-primary fw-bold">Découvrir <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="col-md-4">
+                    <div class="card service-card h-100 p-4 border-primary position-relative">
+                        <span class="badge badge-populaire position-absolute top-0 end-0 m-3 rounded-pill px-3 py-2">POPULAIRE</span>
+                        <div class="mb-3 text-primary fs-3">
+                            <i class="bi bi-basket-fill"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2">Bidè Pressing</h4>
+                        <p class="text-muted fs-7 mb-4">Nettoyage à sec, repassage et soin méticuleux de vos textiles délicats avec collecte et livraison.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
+                            <div>
+                                <small class="text-muted d-block">À partir de</small>
+                                <span class="fw-bold text-dark">1 500 FCFA</span>
+                            </div>
+                            <a href="#" class="btn btn-primary rounded-pill btn-sm fw-bold">Découvrir <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="col-md-4">
+                    <div class="card service-card h-100 p-4">
+                        <div class="mb-3 text-primary fs-3">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2">Bidè Entretien</h4>
+                        <p class="text-muted fs-7 mb-4">Maintenance préventive, réparations mineures et diagnostic technique par nos experts qualifiés.</p>
+                        <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
+                            <div>
+                                <small class="text-muted d-block">À partir de</small>
+                                <span class="fw-bold text-dark">10 000 FCFA</span>
+                            </div>
+                            <a href="#" class="btn btn-light rounded-pill btn-sm text-primary fw-bold">Découvrir <i class="bi bi-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Bar -->
+    <footer class="bg-white border-top py-4 mt-5">
+        <div class="container">
+            <div class="row gy-3 align-items-center">
+                <div class="col-md-3">
+                    <a class="navbar-brand fw-bold text-primary" href="#">Bidè</a>
+                    <p class="text-muted small mb-0 mt-1">Maintenance premium pour votre quotidien.</p>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-1 fs-7">HORAIRES D'OUVERTURE</h6>
+                    <small class="text-muted d-block">Lundi - Samedi: 08:00 - 19:00</small>
+                    <small class="text-muted d-block">Dimanche: Sur RDV</small>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-1 fs-7">CONTACT</h6>
+                    <small class="text-muted d-block">+228 00 00 00 00</small>
+                    <small class="text-muted d-block">contact@bide-services.com</small>
+                </div>
+                <div class="col-md-3 text-md-end">
+                    <a href="#" class="btn btn-success rounded-pill px-3 py-2 fw-semibold btn-sm">
+                        <i class="bi bi-whatsapp me-1"></i> Contacter par WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="border-top mt-4 pt-3 text-center text-muted small">
+                &copy; 2026 Bidè Premium Services. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
