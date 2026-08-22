@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bidè - Pressing & Nettoyage Textile</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Icônes Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- CSS Personnalisé -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-md bg-white border-bottom sticky-top">
+    <div class="container-xl">      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787313272/image-removebg-preview_2.png" alt="Bidè" style="height: 60px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav gap-3 font-medium">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="lavage.html">Lavage Auto</a></li>
+          <li class="nav-item"><a class="nav-link active text-primary fw-bold border-bottom border-primary border-2" href="pressing.html">Pressing</a></li>
+          <li class="nav-item"><a class="nav-link" href="entretien.html">Entretien</a></li>
+          <li class="nav-item"><a class="nav-link" href="commande.html">Suivi de Commande</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-primary rounded-3 px-3 py-2 btn-sm fw-semibold">Réserver avec Bidè</button>
+        <button class="btn btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+          <i class="fa-regular fa-user"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <!-- HERO SECTION — Vidéo de fond -->
+  <section class="hero-section position-relative" style="min-height: 520px;">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="https://res.cloudinary.com/wjsni1cc/video/upload/v1787348644/WhatsApp_Video_2026-08-21_at_08.17.30.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container-xl" style="position: relative; z-index: 2; padding: 60px 0;">
+      <div class="row align-items-center g-4">
+
+        <!-- COLONNE GAUCHE : Texte + badge -->
+        <div class="col-lg-6">
+          <div class="hero-badge">
+            <i class="fa-solid fa-shirt"></i> Premium Care
+          </div>
+          <h1 class="hero-title">
+            <strong class="text-black-force">Pressing &</strong><br>
+            Nettoyage Textile
+          </h1>
+          <p class="hero-subtitle">
+            L'expertise d'un artisan teinturier, la simplicité d'un service digital. Prenez soin de votre garde-robe avec notre service de nettoyage à sec et repassage haute précision.
+          </p>
+          <div class="d-flex gap-3 align-items-center">
+            <button class="btn btn-primary px-4 py-2.5 fw-semibold rounded-3">Planifier un ramassage <i class="fa-solid fa-arrow-right ms-1"></i></button>
+            <a href="#pressing-articles" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 10px 24px; border-radius: 12px; font-weight: 600;">Voir les tarifs</a>
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE : Image + badge -->
+        <div class="col-lg-6">
+          <div class="rounded-4 overflow-hidden hero-float" style="box-shadow: 0 20px 50px rgba(0,0,0,0.25);">
+            <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787217955/a6e686ff-1214-4684-bb1d-563180a76f86.png" class="img-fluid w-100" alt="Pressing écologique" style="height: 380px; object-fit: cover; border-radius: 16px;">
+          </div>
+          <div class="d-flex align-items-center gap-3 mt-3 p-3 rounded-3" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">
+            <div class="p-2 rounded-circle" style="background: rgba(255,255,255,0.2); color: #fff;"><i class="fa-solid fa-leaf"></i></div>
+            <div>
+              <strong class="d-block small" style="color: #fff;">Processus Écologique</strong>
+              <span class="extra-small" style="color: rgba(255,255,255,0.7);">Solvants doux et respectueux</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION ARTICLES ET PANIER -->
+  <section class="pb-5">
+    <div class="container-xl">
+      <div class="row g-4">
+        
+        <!-- COLONNE ARTICLES (GAUCHE) -->
+        <div class="col-lg-8">
+          
+          <!-- Filtres catégories -->
+          <div class="d-flex flex-wrap gap-2 mb-4" id="pressing-filters">
+            <button class="btn btn-primary rounded-pill px-3 py-1.5 text-xs fw-semibold" data-filter="ville">Vêtements de ville</button>
+            <button class="btn btn-light text-secondary rounded-pill px-3 py-1.5 text-xs fw-semibold" data-filter="costumes">Costumes & Robes</button>
+            <button class="btn btn-light text-secondary rounded-pill px-3 py-1.5 text-xs fw-semibold" data-filter="maison">Linge de maison</button>
+          </div>
+
+          <!-- Grille d'articles -->
+          <div class="row g-3" id="pressing-articles">
+            
+            <!-- === VÊTEMENTS DE VILLE === -->
+            <div class="col-md-4 col-sm-6 article-card" data-category="ville">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787393522/18c20857-c535-4f66-a09c-40e5fbd8ca36.png" alt="Chemise" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Chemise</h3>
+                  <p class="text-muted extra-small mb-3">Lavage & Repassage sur cintre</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">1 500 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Chemise" data-price="1500">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card" data-category="ville">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787393960/27709581-d1cb-4bb9-9e3d-8801cb44f2b8.png" alt="Pantalon" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Pantalon</h3>
+                  <p class="text-muted extra-small mb-3">Nettoyage à sec & Repassage</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">2 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Pantalon" data-price="2000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card" data-category="ville">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787394169/9c8924b2-8691-4ebb-bdf7-e398c32b2298.png" alt="T-shirt / Polo" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">T-shirt / Polo</h3>
+                  <p class="text-muted extra-small mb-3">Lavage délicat & Pliage</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">1 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="T-shirt / Polo" data-price="1000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card" data-category="ville">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787394371/756021fd-4ebe-4eb0-b637-09e058f839d9.png" alt="Pull / Gilet" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Pull / Gilet</h3>
+                  <p class="text-muted extra-small mb-3">Soin maille</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">2 500 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Pull / Gilet" data-price="2500">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- === COSTUMES & ROBES === -->
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="costumes">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787394466/efba3d2e-745d-4b8a-bcba-13532420be61.png" alt="Costume complet" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Costume complet</h3>
+                  <p class="text-muted extra-small mb-3">Nettoyage à sec & Repassage pro</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">4 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Costume complet" data-price="4000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="costumes">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787394733/11b0ec4b-7e8f-42d2-b92f-3e15cc6eb17b.png" alt="Robe / Jupe" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Robe / Jupe</h3>
+                  <p class="text-muted extra-small mb-3">Lavage délicat & Repassage</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">3 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Robe / Jupe" data-price="3000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="costumes">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787394837/452c0f26-225a-4181-a69e-f9071905c38b.png" alt="Veste / Blazer" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Veste / Blazer</h3>
+                  <p class="text-muted extra-small mb-3">Soin & Dépoussiérage</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">3 500 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Veste / Blazer" data-price="3500">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="costumes">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787394971/a70f444f-c755-461a-b058-6ef2509a8657.png" alt="Manteau / Doudoune" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Manteau / Doudoune</h3>
+                  <p class="text-muted extra-small mb-3">Nettoyage profond & Traitement</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">5 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Manteau / Doudoune" data-price="5000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- === LINGE DE MAISON === -->
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="maison">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787395168/495804da-99d0-472d-8d0e-1e2945f8ccd5.png" alt="Draps / Housse de lit" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Draps / Housse de lit</h3>
+                  <p class="text-muted extra-small mb-3">Lavage & Repassage plats</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">2 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Draps / Housse de lit" data-price="2000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="maison">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787395310/fae72e0a-e926-4360-ab75-0bf01ee1624d.png" alt="Couvertures / Plaids" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Couvertures / Plaids</h3>
+                  <p class="text-muted extra-small mb-3">Nettoyage en profondeur</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">3 500 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Couvertures / Plaids" data-price="3500">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="maison">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787395398/0f02b06f-2bc1-460d-a3ff-c3e0ab046939.png" alt="Rideaux / Voilages" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Rideaux / Voilages</h3>
+                  <p class="text-muted extra-small mb-3">Lavage délicat & Dépoussiérage</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">4 000 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Rideaux / Voilages" data-price="4000">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 article-card d-none" data-category="maison">
+              <div class="card card-item h-100 border-0 shadow-sm p-3 rounded-4 d-flex flex-column justify-content-between">
+                <div>
+                  <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787395496/07d71869-7cdc-4220-87d3-a2449b29c337.png" alt="Taies d'oreiller" class="w-100 rounded-3 mb-3" style="height: 100px; object-fit: cover;">
+                  <h3 class="h6 fw-bold text-dark mb-1">Taies d'oreiller</h3>
+                  <p class="text-muted extra-small mb-3">Lavage & Désinfection</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-primary small">1 500 FCFA</span>
+                  <button class="btn btn-primary rounded-circle p-0 d-flex align-items-center justify-content-center add-to-cart-btn" style="width: 28px; height: 28px;" data-name="Taies d'oreiller" data-price="1500">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- BANNIÈRE EXPRESS PICKUP -->
+          <div class="card border-0 bg-primary-subtle p-4 rounded-4 mt-4">
+            <div class="row align-items-center g-3">
+              <div class="col-md-7">
+                <span class="badge bg-white text-primary fw-bold text-uppercase extra-small mb-2 px-2.5 py-1">Service inclus</span>
+                <h2 class="h5 fw-bold text-dark mb-2">Bidè Express Pickup & Delivery</h2>
+                <p class="text-secondary extra-small mb-0">
+                  Ne vous déplacez plus. Notre voiturier récupère vos articles à domicile ou au bureau, et vous les ramène sous 48h, sur cintre ou sous housse protectrice.
+                </p>
+              </div>
+              <div class="col-md-5">
+                <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787392928/eef3e1fe-b165-4e71-86b5-8f3da64c0c8b.png" class="img-fluid rounded-3 shadow-sm" alt="Express Pickup Bidè">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- COLONNE PANIER (DROITE) -->
+        <div class="col-lg-4">
+          <div class="card border-0 shadow-sm rounded-4 p-4 sticky-top" style="top: 80px;">
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class="h6 fw-bold mb-0 d-flex align-items-center gap-2 text-dark">
+                <i class="fa-solid fa-basket-shopping text-primary"></i> Votre Panier
+              </h2>
+              <span class="badge bg-success-subtle text-success rounded-pill px-2.5 py-1 extra-small fw-bold" id="cart-badge">0 article</span>
+            </div>
+
+            <!-- Zone dynamique des articles sélectionnés -->
+            <div id="cart-items-container" class="py-4 border-top border-bottom text-center">
+              <i class="fa-solid fa-shirt text-muted fs-3 mb-2 opacity-50"></i>
+              <p class="text-muted extra-small mb-0">Sélectionnez des articles pour commencer</p>
+            </div>
+
+            <!-- Sous-totaux -->
+            <div class="pt-3 pb-2 extra-small">
+              <div class="d-flex justify-content-between text-muted mb-1">
+                <span>Sous-total</span>
+                <span class="fw-bold text-dark" id="subtotal">0 FCFA</span>
+              </div>
+              <div class="d-flex justify-content-between text-muted">
+                <span>Frais de ramassage</span>
+                <span class="text-success fw-semibold">Offert</span>
+              </div>
+            </div>
+
+            <!-- Total -->
+            <div class="d-flex justify-content-between align-items-center py-3 border-top border-dashed">
+              <span class="fw-bold text-dark">Total</span>
+              <span class="h4 fw-bold text-primary mb-0" id="total">0 FCFA</span>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2.5 fw-bold d-flex align-items-center justify-content-center gap-2 mt-2" id="submit-btn" disabled>
+              <span>Planifier le ramassage</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION L'ART DU PRESSING -->
+  <section class="py-5" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff;">
+    <div class="container-xl">
+      <div class="row align-items-center g-5">
+
+        <!-- COLONNE GAUCHE : Texte + étapes -->
+        <div class="col-lg-6">
+          <span class="badge bg-white text-dark fw-bold text-uppercase mb-3 px-3 py-2" style="font-size: 0.75rem; letter-spacing: 1px;">Processus Professionnel</span>
+          <h2 class="fw-bold mb-4" style="font-size: 2rem; line-height: 1.2;">L'art du pressing<br>par <span class="text-primary">Bidè</span></h2>
+
+          <div class="d-flex flex-column gap-4">
+
+            <!-- Étape 01 -->
+            <div class="d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px; background: rgba(59,130,246,0.15); color: #3b82f6; font-size: 0.9rem;">01</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Pré-traitement & Tri</h3>
+                <p class="extra-small mb-0" style="color: rgba(255,255,255,0.6);">Chaque article est analysé, classé par type de tissu et traité individuellement avant le nettoyage.</p>
+              </div>
+            </div>
+
+            <!-- Étape 02 -->
+            <div class="d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px; background: rgba(59,130,246,0.15); color: #3b82f6; font-size: 0.9rem;">02</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Nettoyage à Sec</h3>
+                <p class="extra-small mb-0" style="color: rgba(255,255,255,0.6);">Utilisation de solvants doux et écologiques qui préservent les fibres et les couleurs de vos vêtements.</p>
+              </div>
+            </div>
+
+            <!-- Étape 03 -->
+            <div class="d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px; background: rgba(59,130,246,0.15); color: #3b82f6; font-size: 0.9rem;">03</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Repassage Professionnel</h3>
+                <p class="extra-small mb-0" style="color: rgba(255,255,255,0.6);">Repassage haute précision à la vapeur pour un rendu impeccable, sans brillance ni brûlure.</p>
+              </div>
+            </div>
+
+            <!-- Étape 04 -->
+            <div class="d-flex align-items-start gap-3">
+              <div class="flex-shrink-0 rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px; background: rgba(59,130,246,0.15); color: #3b82f6; font-size: 0.9rem;">04</div>
+              <div>
+                <h3 class="h6 fw-bold mb-1">Contrôle Qualité & Emballage</h3>
+                <p class="extra-small mb-0" style="color: rgba(255,255,255,0.6);">Inspection finale, pliage soigné ou mise sur cintre avec housse protectrice premium.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE : Vidéo + badge -->
+        <div class="col-lg-6">
+          <div class="rounded-4 overflow-hidden" style="box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+            <video autoplay muted loop playsinline class="w-100" style="height: 420px; object-fit: cover; display: block;">
+              <source src="https://res.cloudinary.com/wjsni1cc/video/upload/v1787218973/dry_cleaning.mp4" type="video/mp4">
+            </video>
+          </div>
+          <!-- Badge qualité -->
+          <div class="d-flex align-items-center gap-3 mt-4 p-3 rounded-3" style="background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1);">
+            <div class="p-2 rounded-circle" style="background: rgba(59,130,246,0.2); color: #3b82f6;"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+              <strong class="d-block small" style="color: #fff;">Satisfaction 99.9%</strong>
+              <span class="extra-small" style="color: rgba(255,255,255,0.5);">Plus de 2 000 clients satisfaits</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MODAL PAIEMENT PRESSING
+       Espace de paiement intégré pour le pressing
+       ============================================================ -->
+  <div class="modal fade" id="pressingPaymentModal" tabindex="-1" aria-labelledby="pressingPaymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="pressingPaymentModalLabel">
+            <i class="fa-solid fa-basket-shopping text-primary me-2"></i> Paiement Pressing
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            
+            <!-- Formulaire infos client -->
+            <div class="col-lg-7">
+              <h6 class="fw-bold text-dark mb-3"><i class="fa-regular fa-user text-primary me-2"></i>Vos informations</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-semibold">Nom <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="press-nom" placeholder="Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-semibold">Prénoms <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="press-prenom" placeholder="John" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-semibold">Email <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="press-email" placeholder="exemple@email.com" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-semibold">
+                    <i class="fa-brands fa-whatsapp text-success me-1"></i> WhatsApp <span class="text-danger">*</span>
+                  </label>
+                  <div class="input-group">
+                    <select class="form-select bg-white fw-bold text-secondary" id="press-whatsapp-code" style="max-width: 110px;">
+                      <option value="+228" selected>+228 Togo</option>
+                      <option value="+225">+225 Côte d'Ivoire</option>
+                      <option value="+223">+223 Mali</option>
+                      <option value="+226">+226 Burkina Faso</option>
+                      <option value="+227">+227 Niger</option>
+                      <option value="+33">+33 France</option>
+                      <option value="+1">+1 USA</option>
+                    </select>
+                    <input type="tel" class="form-control" id="press-whatsapp" placeholder="90 00 00 00" required>
+                  </div>
+                </div>
+              </div>
+
+              <h6 class="fw-bold text-dark mt-4 mb-3"><i class="fa-solid fa-location-dot text-primary me-2"></i>Adresse de ramassage</h6>
+              <div class="d-flex gap-2 mb-3">
+                <input type="text" class="form-control" id="press-address" placeholder="Quartier, rue, repère..." required>
+                <button class="btn btn-light-primary btn-sm fw-semibold text-nowrap" id="press-locate-btn">
+                  <i class="fa-solid fa-crosshairs"></i> Me localiser
+                </button>
+              </div>
+              <div style="border-radius:10px; overflow:hidden; border:1px solid #e9edf5; margin-bottom:12px;">
+                <iframe id="press-map-iframe" src="https://www.openstreetmap.org/export/embed.html?bbox=1.15,6.08,1.30,6.23&layer=mapnik&marker=6.17,1.22" style="width:100%; height:180px; border:none;" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              </div>
+
+              <h6 class="fw-bold text-dark mt-4 mb-3"><i class="fa-regular fa-calendar text-primary me-2"></i>Créneau</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-semibold">Date</label>
+                  <input type="date" class="form-control" id="press-date" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-semibold">Heure</label>
+                  <select class="form-select" id="press-time">
+                    <option value="08h00-10h00">08h00 - 10h00</option>
+                    <option value="10h00-12h00">10h00 - 12h00</option>
+                    <option value="14h00-16h00">14h00 - 16h00</option>
+                    <option value="16h00-18h00">16h00 - 18h00</option>
+                  </select>
+                </div>
+              </div>
+
+              <h6 class="fw-bold text-dark mt-4 mb-3"><i class="fa-regular fa-credit-card text-primary me-2"></i>Mode de paiement</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="payment-box active p-3 d-flex align-items-start gap-3" onclick="selectPayment(this, 'cash')">
+                    <input class="form-check-input mt-1" type="radio" name="pressPayment" id="press-cash" checked>
+                    <label for="press-cash" class="cursor-pointer">
+                      <strong class="d-block text-dark small">Espèces</strong>
+                      <span class="text-muted extra-small">Paiement à la livraison</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="payment-box p-3 d-flex align-items-start gap-3" onclick="selectPayment(this, 'mobile')">
+                    <input class="form-check-input mt-1" type="radio" name="pressPayment" id="press-mobile">
+                    <label for="press-mobile" class="cursor-pointer">
+                      <strong class="d-block text-dark small">Mobile Money</strong>
+                      <span class="text-muted extra-small">Wave, Orange, MTN...</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Résumé commande -->
+            <div class="col-lg-5">
+              <div class="bg-light rounded-4 p-4">
+                <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-receipt text-primary me-2"></i>Résumé de la commande</h6>
+                <div id="press-order-summary" class="border-bottom pb-3 mb-3">
+                  <!-- Injecté par JS -->
+                </div>
+                <!-- CODE PROMO -->
+                <div class="mt-3 mb-3">
+                  <label class="form-label fw-semibold small text-muted">Code promo (optionnel)</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control rounded-start-3 text-uppercase" id="press-promo-input" placeholder="Ex: KOFI2024" style="letter-spacing:1px;">
+                    <button class="btn btn-outline-primary rounded-end-3 fw-semibold" id="press-promo-btn" type="button">Appliquer</button>
+                  </div>
+                </div>
+
+                <div class="extra-small">
+                  <div class="d-flex justify-content-between text-muted mb-1">
+                    <span>Sous-total</span>
+                    <span class="fw-bold text-dark" id="press-summary-subtotal">0 FCFA</span>
+                  </div>
+                  <div class="d-flex justify-content-between text-success mb-1 d-none" id="press-promo-discount-row">
+                    <span>Réduction promo</span>
+                    <span class="fw-bold" id="press-promo-discount">0 FCFA</span>
+                  </div>
+                  <div class="d-flex justify-content-between text-muted mb-1">
+                    <span>Frais de ramassage</span>
+                    <span class="text-success fw-semibold">Offert</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top border-dashed">
+                    <span class="fw-bold text-dark">Total</span>
+                    <span class="h5 fw-bold text-primary mb-0" id="press-summary-total">0 FCFA</span>
+                  </div>
+                </div>
+
+                <div class="form-check mt-3 p-3 rounded-3" style="background-color: #f8faff; border: 1px solid #e7edf8;">
+                  <input class="form-check-input" type="checkbox" id="press-rgpd">
+                  <label class="form-check-label small text-dark" for="press-rgpd">
+                    J'accepte les <a href="#" data-bs-toggle="modal" data-bs-target="#modalConditions" class="text-decoration-underline">Conditions Générales</a>
+                    et la <a href="#" data-bs-toggle="modal" data-bs-target="#modalPolitique" class="text-decoration-underline">Politique de Confidentialité</a>
+                  </label>
+                </div>
+
+                <button class="btn btn-primary w-100 py-2.5 fw-bold d-flex align-items-center justify-content-center gap-2 mt-3" id="press-confirm-btn" disabled>
+                  <i class="fa-solid fa-check"></i> Confirmer la commande
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL MERCI PRESSING -->
+  <div class="modal fade" id="pressingThankYouModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4">
+        <div class="modal-body p-5 text-center">
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 72px; height: 72px; background-color: #ecfdf5; color: #059669;">
+            <i class="fa-solid fa-circle-check fs-2"></i>
+          </div>
+          <h3 class="h5 fw-bold text-dark mb-2">Commande confirmée !</h3>
+          <p class="text-muted small mb-1">Votre commande <strong id="press-thank-you-id"></strong> a été enregistrée.</p>
+          <p class="text-muted small mb-4">Un voiturier sera envoyé à votre adresse au créneau choisi.</p>
+          <button class="btn btn-primary rounded-3 px-4 py-2 fw-semibold" data-bs-dismiss="modal">Parfait, merci !</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+ <footer style="background-color: #ebf0fe;">
+    <div class="container">
+      <div class="row g-4 align-items-start mb-4">
+        
+        <!-- Logo et Slogan -->
+        <div class="col-12 col-md-3">
+          <div class="d-flex align-items-center mb-2">
+            <span class="fs-4 fw-bold text-primary"><img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787247122/logo_bide.png" alt="Bidè" style="height: 120px;"></span>
+          </div>
+          <p class="text-secondary small mb-0" style="font-size: 0.85rem;">
+            Maintenance premium pour citadins exigeants.
+          </p>
+        </div>
+
+        <!-- Horaires d'ouverture -->
+        <div class="col-12 col-md-3">
+          <h6 class="fw-bold text-dark text-uppercase mb-3" style="font-size: 0.85rem; letter-spacing: 0.5px;">
+            Horaires d'ouverture
+          </h6>
+          <p class="text-secondary small mb-1" style="font-size: 0.85rem;">
+            Lundi - Samedi: 08:00 - 20:00
+          </p>
+          <p class="text-secondary small mb-0" style="font-size: 0.85rem;">
+            Dimanche: Fermé
+          </p>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-12 col-md-3">
+          <h6 class="fw-bold text-dark text-uppercase mb-3" style="font-size: 0.85rem; letter-spacing: 0.5px;">
+            Contact
+          </h6>
+          <p class="text-secondary small mb-2 d-flex align-items-center" style="font-size: 0.85rem;">
+            <i class="fa-solid fa-phone me-2"></i>
+            <a href="tel:+22897906711" class="text-secondary text-decoration-none">+228 97 90 67 11</a>
+          </p>
+          <p class="text-secondary small mb-0 d-flex align-items-center" style="font-size: 0.85rem;">
+            <i class="fa-solid fa-envelope me-2"></i>
+            <a href="mailto:contact@bide.app" class="text-secondary text-decoration-none">contact@bide.app</a>
+          </p>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="col-12 col-md-3">
+          <h6 class="fw-bold text-dark text-uppercase mb-3" style="font-size: 0.85rem; letter-spacing: 0.5px;">
+            WhatsApp
+          </h6>
+          <a href="https://wa.me/22897906711" target="_blank" class="btn whatsapp-btn w-100 rounded-pill py-2 fw-semibold d-inline-flex align-items-center justify-content-center">
+            Contacter par WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="border-top pt-3 text-center" style="border-color: rgba(0,0,0,0.08) !important;">
+        <p class="text-secondary mb-0" style="font-size: 0.75rem;">
+          &copy; 2024 Bidè Premium Services. Tous droits réservés.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Bootstrap & JS Perso -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
