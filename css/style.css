@@ -1,0 +1,1927 @@
+/* ================================================================
+   BIDÈ PREMIUM SERVICES — FEUILLE DE STYLE PRINCIPALE
+   ================================================================
+   Ce fichier contient TOUT le CSS du projet.
+   
+   SOMMAIRE :
+   ─────────────────────────────────────────────────────────────────
+   1.  Variables & Fond Global         — Couleurs, polices, fond
+   2.  Navbar                          — Barre de navigation (toutes pages)
+   3.  Boutons                         — Styles globaux des boutons
+   4.  Hero (Page d'accueil)           — Section héro + vidéo + carrousel
+   5.  Estimateur Express              — Formulaire d'estimation dans le hero
+   6.  Titres de section               — Classes réutilisables pour les titres
+   7.  Cartes Services (Accueil)       — Les 4 cartes : Auto, Pressing, Entretien, Ménage
+   8.  Section "Pourquoi Bidè"         — Bloc image + stats
+   9.  Footer                          — Pied de page (toutes pages)
+   10. Utilitaires                     — Classes helpers (tailles, marges, avatars)
+   11. Stepper / Étapes (Entretien)    — Barre de progression en étapes
+   12. Formulaires & Paiement          — Cartes de formulaire, choix de paiement
+   13. Animations Carrousel            — Keyframes pour transitions d'images
+   14. Responsive — Tablette (≤992px)   — Adaptations tablette
+   15. Responsive — Mobile (≤768px)     — Adaptations mobile
+   16. Responsive — Petit mobile (≤576px) — Très petits écrans
+   17. Compatibilité Material Icons    — Police Google Material Symbols
+   ================================================================ */
+
+
+/* ================================================================
+   1. VARIABLES & FOND GLOBAL
+   ================================================================
+   - Définit les couleurs principales via CSS custom properties
+   - Applique la police et le fond sur tout le body
+   - Utilisé par toutes les pages du projet
+   ================================================================ */
+
+:root {
+  /* Palette principale */
+  --primary: #0b5bd3;          /* Bleu principal (liens, boutons, accents) */
+  --primary-dark: #0946a8;     /* Bleu foncé (hover, dégradés) */
+  --primary-light: #e8f0fe;    /* Bleu très clair (fonds légers, badges) */
+
+  /* Texte */
+  --text-dark: #1a2742;        /* Titres et texte principal */
+  --text-muted: #6b7a94;       /* Texte secondaire, descriptions */
+
+  /* Fond & bordures */
+  --bg-page: #f4f6fb;          /* Fond gris-bleu très clair de la page */
+  --border-light: #e4eaf3;     /* Bordures légères (cartes, séparateurs) */
+
+  /* Border-radius (arrondis) */
+  --radius-lg: 20px;           /* Grand arrondi (cartes, hero, estimateur) */
+  --radius-md: 14px;           /* Arrondi moyen (icônes, inputs) */
+  --radius-sm: 10px;           /* Petit arrondi (badges, boutons) */
+}
+
+/* Reset du box-sizing pour tous les éléments */
+* { box-sizing: border-box; }
+
+/* Style de base du body : fond, police, couleur, marge */
+body {
+  background: var(--bg-page);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Les images ne débordent jamais de leur conteneur */
+img { max-width: 100%; display: block; }
+
+/* Position du "&" dans le titre hero (page d'accueil uniquement) */
+#et { padding-left: 190px; }
+
+
+/* ================================================================
+   2. NAVBAR
+   ================================================================
+   - Barre de navigation sticky (reste fixe en scrollant)
+   - Logo à gauche, liens au centre, boutons à droite
+   - S'adapte en hamburger sur mobile
+   ================================================================ */
+
+/* Conteneur principal de la navbar */
+.navbar {
+  background: rgba(255,255,255,0.92) !important;  /* Blanc semi-transparent */
+  backdrop-filter: blur(12px);                     /* Effet flou derrière */
+  box-shadow: 0 2px 12px rgba(11,27,65,0.06);     /* Ombre légère en bas */
+  padding: 6px 0 !important;                       /* Espacement interne réduit */
+  min-height: auto !important;                     /* Hauteur minimale flexible */
+}
+
+/* Disposition flex du conteneur navbar */
+.navbar .container-xl {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Logo de la navbar : pas de marge, pas de padding */
+.navbar-brand {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0;              /* Empêche le logo de rétrécir */
+}
+
+/* Taille du logo dans la navbar */
+.navbar-brand img {
+  height: 50px !important;
+}
+
+/* Bouton hamburger (menu mobile) */
+.navbar-toggler {
+  border: none;
+  padding: 4px 8px;
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+/* Supprime l'ombre au clic sur le hamburger */
+.navbar-toggler:focus { box-shadow: none; }
+
+/* Icône du hamburger (3 barres) en SVG inline, couleur bleue */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(11,91,211,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Liens de navigation : texte, taille, espacement, arrondi */
+.navbar-nav .nav-link {
+  color: var(--text-dark);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 12px !important;
+  border-radius: 8px;
+  transition: all 0.2s;        /* Transition fluide au survol */
+}
+
+/* Effet au survol : fond bleu clair + texte bleu */
+.navbar-nav .nav-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* Lien actif (page courante) : bleu + gras */
+.navbar-nav .nav-link.active {
+  color: var(--primary) !important;
+  font-weight: 700;
+}
+
+/* Zone des boutons à droite de la navbar */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: false;
+}
+
+
+/* ================================================================
+   3. BOUTONS
+   ================================================================
+   - Style global des boutons .btn-primary
+   - Dégradé bleu, ombre, effet hover avec élévation
+   ================================================================ */
+
+/* Bouton principal : dégradé bleu + ombre */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border: none;
+  box-shadow: 0 4px 14px rgba(11,91,211,0.25);
+  transition: all 0.2s;
+}
+
+/* Effet hover : ombre plus forte + légère élévation */
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0a52c4 0%, #083d91 100%);
+  box-shadow: 0 6px 20px rgba(11,91,211,0.35);
+  transform: translateY(-1px);
+}
+
+
+/* ================================================================
+   4. HERO (Page d'accueil)
+   ================================================================
+   - Section héro avec vidéo de fond + overlay bleu
+   - Contenu texte à gauche, carrousel d'images à droite
+   - Se déclenche sur toutes les pages qui utilisent .hero-section
+   ================================================================ */
+
+/* Conteneur de la section héro */
+.hero-section {
+  position: relative;          /* Pour positionner vidéo et overlay par-dessus */
+  overflow: hidden;            /* Cache les débords de la vidéo */
+  min-height: 520px;           /* Hauteur minimale sur desktop */
+  padding: 60px 0;
+}
+
+/* Vidéo de fond : plein écran, couvre tout */
+.hero-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;                 /* Derrière l'overlay */
+}
+
+/* Superposition bleue sur la vidéo pour la lisibilité du texte */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(126, 167, 243, 0.85) 0%, rgba(11,91,211,0.70) 100%);
+  z-index: 1;                 /* Entre la vidéo et le contenu */
+}
+
+/* Contenu texte au-dessus de l'overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Badge "Premium Care Services" : style glassmorphism */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);      /* Blanc très transparent */
+  backdrop-filter: blur(8px);               /* Flou derrière */
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25); /* Bordure blanche légère */
+  border-radius: 999px;                     /* Forme pilule */
+  padding: 6px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+/* Titre principal du hero : blanc, gras, responsive */
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);        /* Responsive : 2rem mobile → 3rem desktop */
+  line-height: 1.1;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+/* Sous-titre du hero : blanc semi-transparent */
+.hero-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  max-width: 500px;
+  margin-bottom: 24px;
+}
+
+
+/* ================================================================
+   4b. CARROUSEL DANS LE HERO
+   ================================================================
+   - Carrousel Bootstrap avec coins arrondis
+   - Boutons de navigation circulaires blancs
+   - Images en object-fit:cover
+   ================================================================ */
+
+/* Conteneur du carrousel : arrondi + ombre forte */
+#heroCarousel {
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  overflow: hidden;            /* Masque les débords aux coins arrondis */
+}
+
+/* Images du carrousel : hauteur fixe, couverture */
+#heroCarousel .carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Boutons précédent/suivant : cercle blanc, centrés verticalement */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  opacity: 1;
+  margin: 0 10px;
+  transition: background 0.2s;
+}
+
+/* Effet hover sur les boutons : blanc pur */
+#heroCarousel .carousel-control-prev:hover,
+#heroCarousel .carousel-control-next:hover {
+  background: #fff;
+}
+
+/* Icônes flèches : taille réduite + inversion couleur (noir) */
+#heroCarousel .carousel-control-prev-icon,
+#heroCarousel .carousel-control-next-icon {
+  background-size: 40%;
+  filter: brightness(0) invert(1);
+}
+
+
+/* ================================================================
+   5. ESTIMATEUR EXPRESS
+   ================================================================
+   - Formulaire d'estimation de prix dans le hero
+   - Style glassmorphism (fond blanc translucent + flou)
+   - Utilisé sur index.html
+   ================================================================ */
+
+/* Conteneur de l'estimateur */
+.estimator-wrapper {
+  background: rgba(255,255,255,0.95);       /* Blanc presque opaque */
+  backdrop-filter: blur(10px);               /* Flou derrière */
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* Titre "ESTIMATION EXPRESS" */
+.estimator-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Icône calculatrice dans le titre : couleur bleue */
+.estimator-title i {
+  color: var(--primary);
+}
+
+
+/* ================================================================
+   6. TITRES DE SECTION
+   ================================================================
+   - Classes réutilisables pour les titres de chaque section
+   - .section-label = petit titre bleu au-dessus
+   - .section-title = gros titre principal
+   - .section-desc = description sous le titre
+   ================================================================ */
+
+/* Petit label au-dessus du titre (ex: "NOS PILIERS") */
+.section-label {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* Titre principal de section */
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+/* Description sous le titre */
+.section-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+
+/* ================================================================
+   7. CARTES SERVICES (Page d'accueil)
+   ================================================================
+   - Les 4 cartes : Bidè Auto, Pressing, Entretien, Ménage
+   - Chaque carte a une image, un titre, une description, un prix
+   - Effet hover avec élévation
+   ================================================================ */
+
+/* Conteneur d'une carte service */
+.service-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 50px 20px;          /* Grand padding en haut pour l'image */
+  height: 100%;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Effet hover : élévation + ombre bleue */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(17, 83, 235, 0.1);
+  border-color: transparent;
+}
+
+/* Icône dans la carte (utilisée si pas d'image) */
+.service-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+/* Titre de la carte */
+.service-card h3 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+/* Description de la carte */
+.service-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  flex-grow: 1;                /* Prend tout l'espace disponible */
+  margin-bottom: 16px;
+}
+
+/* Pied de carte : prix + bouton "Découvrir" */
+.service-card .card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Prix affiché dans la carte */
+.service-price {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* Petit texte "A partir de" au-dessus du prix */
+.service-price small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Bouton "Découvrir" : style pill (pilule) */
+.btn-discover {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+/* Effet hover : léger glissement vers la droite */
+.btn-discover:hover {
+  transform: translateX(3px);
+}
+
+/* Badge "Populaire" sur la carte Pressing */
+.badge-popular {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #ecfdf5;
+  color: #059669;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+
+/* ================================================================
+   8. SECTION "POURQUOI BIDÈ" (Page d'accueil)
+   ================================================================
+   - Bloc avec image à gauche + texte + 4 mini-stats à droite
+   - Placé entre les services et le footer
+   ================================================================ */
+
+
+/* ================================================================
+   9. FOOTER
+   ================================================================
+   - Pied de page utilisé sur TOUTES les pages
+   - Logo + Horaires + Contact + WhatsApp
+   - Fond bleu très clair
+   ================================================================ */
+
+/* Conteneur principal du footer */
+.site-footer {
+  background: var(--primary-light);
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0 16px;
+}
+
+/* Logo dans le footer */
+.footer-brand img {
+  height: 100px;
+  margin-bottom: 8px;
+}
+
+/* Texte sous le logo */
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Titres des colonnes du footer (HORAIRES, CONTACT, etc.) */
+.footer-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+/* Texte dans les colonnes du footer */
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  margin: 0 0 4px;
+}
+
+/* Liens dans le footer : même couleur que le texte */
+.footer-text a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Liens au survol : deviennent bleus */
+.footer-text a:hover {
+  color: var(--primary);
+}
+
+/* Bouton WhatsApp : vert caractéristique */
+.whatsapp-btn {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+/* Effet hover WhatsApp : vert foncé + légère élévation */
+.whatsapp-btn:hover {
+  background: #1da851;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Ligne de copyright en bas du footer */
+.footer-bottom {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(11,27,65,0.08);
+}
+
+
+/* ================================================================
+   10. UTILITAIRES
+   ================================================================
+   - Classes helpers réutilisables partout dans le projet
+   - Tailles de texte, marges, avatars
+   ================================================================ */
+
+/* Texte très petit (0.72rem) */
+.extra-small, .text-xs { font-size: 0.72rem; }
+
+/* Marge négative gauche pour chevaucher les avatars */
+.ms-n2 { margin-left: -0.5rem; }
+
+/* Curseur main au survol */
+.cursor-pointer { cursor: pointer; }
+
+/* Avatar rond (image de profil) */
+.avatar { width: 40px; height: 40px; object-fit: cover; }
+
+/* Badge "+4k" à côté des avatars */
+.avatar-badge {
+  width: 36px; height: 36px;
+  font-size: 0.65rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+
+/* ================================================================
+   11. STEPPER / ÉTAPES (Page Entretien)
+   ================================================================
+   - Barre de progression en étapes (Diagnostic → Véhicule → Paiement → Confirmation)
+   - Étape active : fond bleu + ombre
+   - Ligne de connexion entre les étapes
+   ================================================================ */
+
+/* Conteneur d'une étape */
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cercle de l'étape (numéro ou icône) */
+.step-icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: #e9eef8;         /* Gris-bleu clair (état inactif) */
+  color: #7d8ca6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+/* Étape active : fond bleu dégradé + blanc + ombre */
+.step-item.active .step-icon {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(11,91,211,0.3);
+}
+
+/* Label sous l'étape (ex: "Diagnostic") */
+.step-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #7d8ca6;
+  white-space: nowrap;          /* Empêche le retour à la ligne */
+}
+
+/* Label de l'étape active : texte foncé */
+.step-item.active .step-label { color: var(--text-dark); }
+
+/* Ligne de connexion entre deux étapes */
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #dde4f0;         /* Gris clair (non franchi) */
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+/* Ligne franchie : dégradé bleu */
+.step-line.active {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+}
+
+
+/* ================================================================
+   12. FORMULAIRES & PAIEMENT
+   ================================================================
+   - Styles pour les cartes de formulaire et choix de paiement
+   - Utilisé sur les pages lavage, pressing, entretien, ménage
+   ================================================================ */
+
+/* Carte de formulaire générique */
+.custom-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+/* Boîte de choix de paiement (Espèces / Mobile Money) */
+.payment-box {
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Boîte sélectionnée : bordure bleue + fond bleu clair */
+.payment-box.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+
+/* ================================================================
+   13. ANIMATIONS CARROUSEL
+   ================================================================
+   - Keyframes pour les animations de transition des slides
+   - Appliquées via des classes JS (anim-zoom, anim-slide-right, etc.)
+   ================================================================ */
+
+/* Animation 1 : Zoom + Fondu (scale de 0.85 à 1) */
+@keyframes animZoom {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Animation 2 : Glissement par la droite + Fondu */
+@keyframes animSlideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Animation 3 : Glissement par le bas + Fondu */
+@keyframes animSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Application des animations aux images du carrousel */
+.carousel-item.anim-zoom img { animation: animZoom 0.7s ease-out forwards; }
+.carousel-item.anim-slide-right img { animation: animSlideRight 0.7s ease-out forwards; }
+.carousel-item.anim-slide-up img { animation: animSlideUp 0.7s ease-out forwards; }
+
+
+/* ================================================================
+   14. RESPONSIVE — TABLETTE (≤ 992px)
+   ================================================================
+   - Adaptations pour les tablettes et écrans moyens
+   - Hero : hauteur réduite, carrousel plus petit
+   - Cartes : statiques (pas de sticky)
+   ================================================================ */
+
+@media (max-width: 991.98px) {
+
+  /* Hero : hauteur auto, padding réduit */
+  .hero-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  /* Carrousel : images plus petites */
+  #heroCarousel .carousel-item img {
+    height: 320px;
+  }
+
+  /* Lignes de stepper sans marge en bas */
+  .step-line { margin-bottom: 0; }
+
+  /* Carte panier : position statique (pas de sticky) */
+  .cart-card { position: static; }
+}
+
+
+/* ================================================================
+   15. RESPONSIVE — MOBILE (≤ 768px)
+   ================================================================
+   - Adaptations pour les smartphones
+   - Navbar : menu empilé, boutons cachés
+   - Hero : texte plus petit, carrousel réduit
+   - Footer : logo plus petit
+   ================================================================ */
+
+@media (max-width: 767.98px) {
+
+  /* --- NAVBAR MOBILE --- */
+  /* Conteneur : empilé, padding réduit */
+  .navbar .container-xl {
+    flex-wrap: wrap;
+    padding: 0 12px;
+  }
+
+  /* Menu déroulant : padding vertical */
+  .navbar-collapse {
+    padding: 8px 0;
+  }
+
+  /* Liens : pleine largeur, empilés */
+  .navbar-nav {
+    gap: 0 !important;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  /* Liens : padding généreux + séparateur */
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+  }
+
+  /* Boutons navbar (Réserver, User) : cachés sur mobile */
+  .navbar-actions {
+    display: none !important;
+  }
+
+  /* --- HERO MOBILE --- */
+  .hero-section {
+    padding: 24px 0;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Carrousel : images adaptées au mobile */
+  #heroCarousel .carousel-item img {
+    height: 240px;
+  }
+
+  /* Boutons carrousel : plus petits + coins arrondis */
+  #heroCarousel .carousel-control-prev,
+  #heroCarousel .carousel-control-next {
+    width: 32px;
+    height: 32px;
+    margin: 0 6px;
+    border-radius: 10px;
+  }
+
+  /* --- ESTIMATEUR MOBILE --- */
+  .estimator-wrapper {
+    padding: 14px;
+  }
+
+  /* --- TITRES MOBILE --- */
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  /* --- CARTES SERVICES MOBILE --- */
+  .service-card {
+/* ================================================================
+   BIDÈ PREMIUM SERVICES — FEUILLE DE STYLE PRINCIPALE
+   ================================================================
+   Ce fichier contient TOUT le CSS du projet.
+   
+   SOMMAIRE :
+   ─────────────────────────────────────────────────────────────────
+   1.  Variables & Fond Global         — Couleurs, polices, fond
+   2.  Navbar                          — Barre de navigation (toutes pages)
+   3.  Boutons                         — Styles globaux des boutons
+   4.  Hero (Page d'accueil)           — Section héro + vidéo + carrousel
+   5.  Estimateur Express              — Formulaire d'estimation dans le hero
+   6.  Titres de section               — Classes réutilisables pour les titres
+   7.  Cartes Services (Accueil)       — Les 4 cartes : Auto, Pressing, Entretien, Ménage
+   8.  Section "Pourquoi Bidè"         — Bloc image + stats
+   9.  Footer                          — Pied de page (toutes pages)
+   10. Utilitaires                     — Classes helpers (tailles, marges, avatars)
+   11. Stepper / Étapes (Entretien)    — Barre de progression en étapes
+   12. Formulaires & Paiement          — Cartes de formulaire, choix de paiement
+   13. Animations Carrousel            — Keyframes pour transitions d'images
+   14. Responsive — Tablette (≤992px)   — Adaptations tablette
+   15. Responsive — Mobile (≤768px)     — Adaptations mobile
+   16. Responsive — Petit mobile (≤576px) — Très petits écrans
+   17. Compatibilité Material Icons    — Police Google Material Symbols
+   ================================================================ */
+
+
+/* ================================================================
+   1. VARIABLES & FOND GLOBAL
+   ================================================================
+   - Définit les couleurs principales via CSS custom properties
+   - Applique la police et le fond sur tout le body
+   - Utilisé par toutes les pages du projet
+   ================================================================ */
+
+:root {
+  /* Palette principale */
+  --primary: #0b5bd3;          /* Bleu principal (liens, boutons, accents) */
+  --primary-dark: #0946a8;     /* Bleu foncé (hover, dégradés) */
+  --primary-light: #e8f0fe;    /* Bleu très clair (fonds légers, badges) */
+
+  /* Texte */
+  --text-dark: #1a2742;        /* Titres et texte principal */
+  --text-muted: #6b7a94;       /* Texte secondaire, descriptions */
+
+  /* Fond & bordures */
+  --bg-page: #f4f6fb;          /* Fond gris-bleu très clair de la page */
+  --border-light: #e4eaf3;     /* Bordures légères (cartes, séparateurs) */
+
+  /* Border-radius (arrondis) */
+  --radius-lg: 20px;           /* Grand arrondi (cartes, hero, estimateur) */
+  --radius-md: 14px;           /* Arrondi moyen (icônes, inputs) */
+  --radius-sm: 10px;           /* Petit arrondi (badges, boutons) */
+}
+
+/* Reset du box-sizing pour tous les éléments */
+* { box-sizing: border-box; }
+
+/* Style de base du body : fond, police, couleur, marge */
+body {
+  background: var(--bg-page);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Les images ne débordent jamais de leur conteneur */
+img { max-width: 100%; display: block; }
+
+/* Position du "&" dans le titre hero (page d'accueil uniquement) */
+#et { padding-left: 190px; }
+
+
+/* ================================================================
+   ================================================================
+   - Barre de navigation sticky (reste fixe en scrollant)
+   - S'adapte en hamburger sur mobile
+   ================================================================ */
+
+.navbar {
+  background: rgba(255,255,255,0.92) !important;  /* Blanc semi-transparent */
+  backdrop-filter: blur(12px);                     /* Effet flou derrière */
+  padding: 6px 0 !important;                       /* Espacement interne réduit */
+  min-height: auto !important;                     /* Hauteur minimale flexible */
+}
+/* Disposition flex du conteneur navbar */
+.navbar .container-xl {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Logo de la navbar : pas de marge, pas de padding */
+.navbar-brand {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0;              /* Empêche le logo de rétrécir */
+
+/* Taille du logo dans la navbar */
+.navbar-brand img {
+  height: 50px !important;
+}
+
+/* Bouton hamburger (menu mobile) */
+.navbar-toggler {
+  border: none;
+  padding: 4px 8px;
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+/* Supprime l'ombre au clic sur le hamburger */
+.navbar-toggler:focus { box-shadow: none; }
+
+/* Icône du hamburger (3 barres) en SVG inline, couleur bleue */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(11,91,211,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Liens de navigation : texte, taille, espacement, arrondi */
+.navbar-nav .nav-link {
+  color: var(--text-dark);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 12px !important;
+  border-radius: 8px;
+  transition: all 0.2s;        /* Transition fluide au survol */
+}
+
+/* Effet au survol : fond bleu clair + texte bleu */
+.navbar-nav .nav-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* Lien actif (page courante) : bleu + gras */
+.navbar-nav .nav-link.active {
+  color: var(--primary) !important;
+  font-weight: 700;
+}
+
+/* Zone des boutons à droite de la navbar */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: false;
+}
+
+
+/* ================================================================
+   3. BOUTONS
+   ================================================================
+   - Style global des boutons .btn-primary
+   - Dégradé bleu, ombre, effet hover avec élévation
+   ================================================================ */
+
+/* Bouton principal : dégradé bleu + ombre */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border: none;
+  box-shadow: 0 4px 14px rgba(11,91,211,0.25);
+  transition: all 0.2s;
+}
+
+/* Effet hover : ombre plus forte + légère élévation */
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0a52c4 0%, #083d91 100%);
+  box-shadow: 0 6px 20px rgba(11,91,211,0.35);
+  transform: translateY(-1px);
+}
+
+
+/* ================================================================
+   4. HERO (Page d'accueil)
+   ================================================================
+   - Section héro avec vidéo de fond + overlay bleu
+   - Contenu texte à gauche, carrousel d'images à droite
+   - Se déclenche sur toutes les pages qui utilisent .hero-section
+   ================================================================ */
+
+/* Conteneur de la section héro */
+.hero-section {
+  position: relative;          /* Pour positionner vidéo et overlay par-dessus */
+  overflow: hidden;            /* Cache les débords de la vidéo */
+  min-height: 520px;           /* Hauteur minimale sur desktop */
+  padding: 60px 0;
+}
+
+/* Vidéo de fond : plein écran, couvre tout */
+.hero-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;                 /* Derrière l'overlay */
+}
+
+/* Superposition bleue sur la vidéo pour la lisibilité du texte */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(126, 167, 243, 0.85) 0%, rgba(11,91,211,0.70) 100%);
+  z-index: 1;                 /* Entre la vidéo et le contenu */
+}
+
+/* Contenu texte au-dessus de l'overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Badge "Premium Care Services" : style glassmorphism */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);      /* Blanc très transparent */
+  backdrop-filter: blur(8px);               /* Flou derrière */
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25); /* Bordure blanche légère */
+  border-radius: 999px;                     /* Forme pilule */
+  padding: 6px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+/* Titre principal du hero : blanc, gras, responsive */
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);        /* Responsive : 2rem mobile → 3rem desktop */
+  line-height: 1.1;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+/* Sous-titre du hero : blanc semi-transparent */
+.hero-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  max-width: 500px;
+  margin-bottom: 24px;
+}
+
+
+/* ================================================================
+   4b. CARROUSEL DANS LE HERO
+   ================================================================
+   - Carrousel Bootstrap avec coins arrondis
+   - Boutons de navigation circulaires blancs
+   - Images en object-fit:cover
+   ================================================================ */
+
+/* Conteneur du carrousel : arrondi + ombre forte */
+#heroCarousel {
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  overflow: hidden;            /* Masque les débords aux coins arrondis */
+}
+
+/* Images du carrousel : hauteur fixe, couverture */
+#heroCarousel .carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Boutons précédent/suivant : cercle blanc, centrés verticalement */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  opacity: 1;
+  margin: 0 10px;
+  transition: background 0.2s;
+}
+
+/* Effet hover sur les boutons : blanc pur */
+#heroCarousel .carousel-control-prev:hover,
+#heroCarousel .carousel-control-next:hover {
+  background: #fff;
+}
+
+/* Icônes flèches : taille réduite + inversion couleur (noir) */
+#heroCarousel .carousel-control-prev-icon,
+#heroCarousel .carousel-control-next-icon {
+  background-size: 40%;
+  filter: brightness(0) invert(1);
+}
+
+
+/* ================================================================
+   5. ESTIMATEUR EXPRESS
+   ================================================================
+   - Formulaire d'estimation de prix dans le hero
+   - Style glassmorphism (fond blanc translucent + flou)
+   - Utilisé sur index.html
+   ================================================================ */
+
+/* Conteneur de l'estimateur */
+.estimator-wrapper {
+  background: rgba(255,255,255,0.95);       /* Blanc presque opaque */
+  backdrop-filter: blur(10px);               /* Flou derrière */
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+/* Titre "ESTIMATION EXPRESS" */
+.estimator-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Icône calculatrice dans le titre : couleur bleue */
+.estimator-title i {
+  color: var(--primary);
+}
+
+
+/* ================================================================
+   6. TITRES DE SECTION
+   ================================================================
+   - Classes réutilisables pour les titres de chaque section
+   - .section-label = petit titre bleu au-dessus
+   - .section-title = gros titre principal
+   - .section-desc = description sous le titre
+   ================================================================ */
+
+/* Petit label au-dessus du titre (ex: "NOS PILIERS") */
+.section-label {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* Titre principal de section */
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+/* Description sous le titre */
+.section-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+
+/* ================================================================
+   7. CARTES SERVICES (Page d'accueil)
+   ================================================================
+   - Les 4 cartes : Bidè Auto, Pressing, Entretien, Ménage
+}
+   - Chaque carte a une image, un titre, une description, un prix
+   - Effet hover avec élévation
+   ================================================================ */
+
+/* Conteneur d'une carte service */
+.service-card {
+  background: #fff;
+
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 50px 20px;          /* Grand padding en haut pour l'image */
+  height: 100%;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Effet hover : élévation + ombre bleue */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(17, 83, 235, 0.1);
+  border-color: transparent;
+}
+
+/* Icône dans la carte (utilisée si pas d'image) */
+.service-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+/* Titre de la carte */
+.service-card h3 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+/* Description de la carte */
+.service-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  flex-grow: 1;                /* Prend tout l'espace disponible */
+  margin-bottom: 16px;
+}
+
+/* Pied de carte : prix + bouton "Découvrir" */
+.service-card .card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Prix affiché dans la carte */
+.service-price {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* Petit texte "A partir de" au-dessus du prix */
+.service-price small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Bouton "Découvrir" : style pill (pilule) */
+.btn-discover {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+/* Effet hover : léger glissement vers la droite */
+.btn-discover:hover {
+  transform: translateX(3px);
+}
+
+/* Badge "Populaire" sur la carte Pressing */
+.badge-popular {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #ecfdf5;
+  color: #059669;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 10px;
+}
+
+
+/* ================================================================
+   8. SECTION "POURQUOI BIDÈ" (Page d'accueil)
+   ================================================================
+   - Bloc avec image à gauche + texte + 4 mini-stats à droite
+   - Placé entre les services et le footer
+   ================================================================ */
+
+
+/* ================================================================
+   9. FOOTER
+   ================================================================
+   - Pied de page utilisé sur TOUTES les pages
+   - Logo + Horaires + Contact + WhatsApp
+   - Fond bleu très clair
+   ================================================================ */
+
+/* Conteneur principal du footer */
+.site-footer {
+  background: var(--primary-light);
+  border-top: 1px solid var(--border-light);
+  padding: 36px 0 16px;
+}
+
+/* Logo dans le footer */
+.footer-brand img {
+  height: 100px;
+  margin-bottom: 8px;
+}
+
+/* Texte sous le logo */
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Titres des colonnes du footer (HORAIRES, CONTACT, etc.) */
+.footer-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+/* Texte dans les colonnes du footer */
+.footer-text {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  margin: 0 0 4px;
+}
+
+/* Liens dans le footer : même couleur que le texte */
+.footer-text a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Liens au survol : deviennent bleus */
+.footer-text a:hover {
+  color: var(--primary);
+}
+
+/* Bouton WhatsApp : vert caractéristique */
+.whatsapp-btn {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+/* Effet hover WhatsApp : vert foncé + légère élévation */
+.whatsapp-btn:hover {
+  background: #1da851;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Ligne de copyright en bas du footer */
+.footer-bottom {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(11,27,65,0.08);
+}
+
+
+/* ================================================================
+   10. UTILITAIRES
+   ================================================================
+   - Classes helpers réutilisables partout dans le projet
+   - Tailles de texte, marges, avatars
+   ================================================================ */
+
+/* Texte très petit (0.72rem) */
+.extra-small, .text-xs { font-size: 0.72rem; }
+
+/* Marge négative gauche pour chevaucher les avatars */
+.ms-n2 { margin-left: -0.5rem; }
+
+/* Curseur main au survol */
+.cursor-pointer { cursor: pointer; }
+
+/* Avatar rond (image de profil) */
+.avatar { width: 40px; height: 40px; object-fit: cover; }
+
+/* Badge "+4k" à côté des avatars */
+.avatar-badge {
+  width: 36px; height: 36px;
+  font-size: 0.65rem;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+
+/* ================================================================
+   11. STEPPER / ÉTAPES (Page Entretien)
+   ================================================================
+   - Barre de progression en étapes (Diagnostic → Véhicule → Paiement → Confirmation)
+   - Étape active : fond bleu + ombre
+   - Ligne de connexion entre les étapes
+   ================================================================ */
+
+/* Conteneur d'une étape */
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cercle de l'étape (numéro ou icône) */
+.step-icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: #e9eef8;         /* Gris-bleu clair (état inactif) */
+  color: #7d8ca6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+/* Étape active : fond bleu dégradé + blanc + ombre */
+.step-item.active .step-icon {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(11,91,211,0.3);
+}
+
+/* Label sous l'étape (ex: "Diagnostic") */
+.step-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #7d8ca6;
+  white-space: nowrap;          /* Empêche le retour à la ligne */
+}
+
+/* Label de l'étape active : texte foncé */
+.step-item.active .step-label { color: var(--text-dark); }
+
+/* Ligne de connexion entre deux étapes */
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #dde4f0;         /* Gris clair (non franchi) */
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+/* Ligne franchie : dégradé bleu */
+.step-line.active {
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+}
+
+
+/* ================================================================
+   12. FORMULAIRES & PAIEMENT
+   ================================================================
+   - Styles pour les cartes de formulaire et choix de paiement
+   - Utilisé sur les pages lavage, pressing, entretien, ménage
+   ================================================================ */
+
+/* Carte de formulaire générique */
+.custom-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+}
+
+/* Boîte de choix de paiement (Espèces / Mobile Money) */
+.payment-box {
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Boîte sélectionnée : bordure bleue + fond bleu clair */
+.payment-box.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+
+/* ================================================================
+   13. ANIMATIONS CARROUSEL
+   ================================================================
+   - Keyframes pour les animations de transition des slides
+   - Appliquées via des classes JS (anim-zoom, anim-slide-right, etc.)
+   ================================================================ */
+
+/* Animation 1 : Zoom + Fondu (scale de 0.85 à 1) */
+@keyframes animZoom {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Animation 2 : Glissement par la droite + Fondu */
+@keyframes animSlideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Animation 3 : Glissement par le bas + Fondu */
+@keyframes animSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Application des animations aux images du carrousel */
+.carousel-item.anim-zoom img { animation: animZoom 0.7s ease-out forwards; }
+.carousel-item.anim-slide-right img { animation: animSlideRight 0.7s ease-out forwards; }
+.carousel-item.anim-slide-up img { animation: animSlideUp 0.7s ease-out forwards; }
+
+
+/* ================================================================
+   14. RESPONSIVE — TABLETTE (≤ 992px)
+   ================================================================
+   - Adaptations pour les tablettes et écrans moyens
+   - Hero : hauteur réduite, carrousel plus petit
+   - Cartes : statiques (pas de sticky)
+   ================================================================ */
+
+@media (max-width: 991.98px) {
+
+  /* Hero : hauteur auto, padding réduit */
+  .hero-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  /* Carrousel : images plus petites */
+  #heroCarousel .carousel-item img {
+    height: 320px;
+  }
+
+  /* Lignes de stepper sans marge en bas */
+  .step-line { margin-bottom: 0; }
+
+  /* Carte panier : position statique (pas de sticky) */
+  .cart-card { position: static; }
+}
+
+
+/* ================================================================
+   15. RESPONSIVE — MOBILE (≤ 768px)
+   ================================================================
+   - Adaptations pour les smartphones
+   - Navbar : menu empilé, boutons cachés
+   - Hero : texte plus petit, carrousel réduit
+   - Footer : logo plus petit
+   ================================================================ */
+
+@media (max-width: 767.98px) {
+
+  /* --- NAVBAR MOBILE --- */
+  /* Conteneur : empilé, padding réduit */
+  .navbar .container-xl {
+    flex-wrap: wrap;
+    padding: 0 12px;
+  }
+
+  /* Menu déroulant : padding vertical */
+  .navbar-collapse {
+    padding: 8px 0;
+  }
+
+  /* Liens : pleine largeur, empilés */
+  .navbar-nav {
+    gap: 0 !important;
+    width: 100%;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+
+  /* Liens : padding généreux + séparateur */
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+  }
+
+  /* Boutons navbar (Réserver, User) : cachés sur mobile */
+  .navbar-actions {
+    display: none !important;
+  }
+
+  /* --- HERO MOBILE --- */
+  .hero-section {
+    padding: 24px 0;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Carrousel : images adaptées au mobile */
+  #heroCarousel .carousel-item img {
+    height: 240px;
+  }
+
+  /* Boutons carrousel : plus petits + coins arrondis */
+  #heroCarousel .carousel-control-prev,
+  #heroCarousel .carousel-control-next {
+    width: 32px;
+    height: 32px;
+    margin: 0 6px;
+    border-radius: 10px;
+  }
+
+  /* --- ESTIMATEUR MOBILE --- */
+  .estimator-wrapper {
+    padding: 14px;
+  }
+
+  /* --- TITRES MOBILE --- */
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  /* --- CARTES SERVICES MOBILE --- */
+  .service-card {
+    padding: 18px 16px;
+  }
+
+  /* --- FOOTER MOBILE --- */
+  .footer-brand img {
+    height: 80px;
+  }
+
+  .footer-title {
+    font-size: 0.65rem;
+  }
+
+  .footer-text {
+    font-size: 0.78rem;
+  }
+
+  /* --- ADMIN MOBILE --- */
+  /* Sidebar : pleine largeur, pas en fixed */
+  .sidebar {
+    width: 100% !important;
+    position: relative !important;
+    min-height: auto !important;
+  }
+
+  /* Contenu principal : pas de margin-left */
+  .main-content {
+    margin-left: 0 !important;
+    padding: 16px !important;
+  }
+
+  /* Barre du haut : empilée */
+  .top-bar {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+
+  /* Modals : marge réduite */
+  .modal-dialog {
+    margin: 8px;
+  }
+
+  /* Formulaires : taille de police augmentée pour touch */
+  .form-control, .form-select {
+    font-size: 0.95rem !important;
+  }
+
+  /* Sections : padding réduit */
+  section.py-5 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
+
+
+/* ================================================================
+   16. RESPONSIVE — PETIT MOBILE (≤ 576px)
+   ================================================================
+   - Très petits écrans (iPhone SE, etc.)
+   - Padding container réduit, espacement serré
+   ================================================================ */
+
+@media (max-width: 575.98px) {
+
+  /* Container : padding latéral réduit */
+  .container-xl {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Grilles : espacement encore plus serré */
+  .row.g-4, .row.g-3 {
+    --bs-gutter-x: 12px;
+  }
+
+  /* Badge hero : encore plus petit */
+  .hero-badge {
+    font-size: 0.65rem;
+    padding: 5px 12px;
+  }
+
+  /* Carrousel : images encore plus petites */
+  #heroCarousel .carousel-item img {
+    height: 200px;
+  }
+
+  /* Stepper : labels et icons réduits */
+  .step-label { font-size: 0.6rem; }
+  .step-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
+
+  /* Boutons : taille de police réduite */
+  .btn { font-size: 0.88rem; }
+}
+
+
+/* ================================================================
+   17. ANIMATION FLOTTANTE (Hero Image)
+   ================================================================
+   L'élément monte et descend doucement en boucle infinie.
+   Utilisée sur les images des sections hero.
+   ================================================================ */
+
+@keyframes floatUpDown {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.hero-float {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+
+/* ================================================================
+   18. HERO BLUE — Fond bleu pour les sections hero des pages services
+   ================================================================
+   Applique le même dégradé bleu que le hero de l'accueil (index.html)
+   sur les sections hero des autres pages.
+   ================================================================ */
+
+.hero-blue {
+  background: linear-gradient(135deg, rgba(73, 127, 226, 0.85) 0%, rgba(11,91,211,0.70) 100%);
+  color: #fff;
+}
+
+.hero-blue .text-dark,
+.hero-blue h1,
+.hero-blue h2,
+.hero-blue h3,
+.hero-blue strong {
+  color: #fff !important;
+}
+
+.hero-blue .text-black-force,
+.hero-blue .text-black-force strong,
+.hero-section .text-black-force,
+.hero-section .text-black-force strong {
+  color: #000 !important;
+}
+
+.hero-blue .text-secondary,
+.hero-blue .text-muted,
+.hero-blue p,
+.hero-blue span,
+.hero-blue .small,
+.hero-blue .extra-small {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.hero-blue .badge.bg-primary-subtle {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.hero-blue .btn-outline-secondary {
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+
+.hero-blue .btn-outline-secondary:hover {
+  background: #fff;
+  color: var(--primary);
+}
+
+.hero-blue .text-warning .fa-star,
+.hero-blue .text-warning .fa-star-half-stroke {
+  color: #fbbf24;
+}
+
+.hero-blue .avatar-badge {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+}
+
+.hero-blue .btn-primary {
+  background: #fff;
+  color: var(--primary);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.hero-blue .btn-primary:hover {
+  background: #f0f0f0;
+}
+
+
+/* ================================================================
+   18. COMPATIBILITÉ MATERIAL ICONS
+   ================================================================
+   - Police Google Material Symbols (utilisée pour certaines icônes)
+   - Assure le rendu correct des icônes Material
+   ================================================================ */
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+  box-shadow: 0 2px 12px rgba(11,27,65,0.06);     /* Ombre légère en bas */
+/* Conteneur principal de la navbar */
+   - Logo à gauche, liens au centre, boutons à droite
+
