@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bidè - Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: #f4f6fc; }
+    .sidebar {
+      width: 240px; min-height: 100vh; background: #ffffff;
+      border-right: 1px solid #e9edf5; position: fixed; top: 0; left: 0; z-index: 100; padding: 20px 0;
+    }
+    .sidebar-brand { display: flex; align-items: center; gap: 10px; padding: 0 20px 24px; border-bottom: 1px solid #e9edf5; margin-bottom: 8px; }
+    .sidebar-brand span { font-size: 1.2rem; font-weight: 700; color: #0b4db7; }
+    .sidebar-nav { padding: 8px 12px; }
+    .sidebar-nav .nav-item { margin-bottom: 4px; }
+    .sidebar-nav .nav-link {
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px;
+      color: #5a6577; font-weight: 500; font-size: 0.92rem; transition: all 0.2s; cursor: pointer; text-decoration: none;
+    }
+    .sidebar-nav .nav-link:hover { background: #f0f4ff; color: #0b4db7; }
+    .sidebar-nav .nav-link.active { background: linear-gradient(135deg, #0f5fd6, #0a49af); color: #ffffff; font-weight: 600; }
+    .sidebar-nav .nav-link i { width: 20px; text-align: center; }
+    .main-content { margin-left: 240px; padding: 24px 32px; }
+    .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .top-bar h1 { font-size: 1.8rem; font-weight: 800; color: #13203b; margin: 0; }
+    .top-bar p { color: #6b7a8d; font-size: 0.92rem; margin: 4px 0 0; }
+    .top-bar-actions { display: flex; align-items: center; gap: 16px; }
+    .btn-rapport {
+      background: #e8fbe8; color: #16a34a; border: 1px solid #c5f0c5; border-radius: 10px;
+      padding: 10px 20px; font-weight: 600; font-size: 0.88rem; display: flex; align-items: center; gap: 8px; cursor: pointer;
+    }
+    .btn-rapport:hover { background: #d4f8d4; color: #15803d; }
+    .icon-bell { width: 40px; height: 40px; border-radius: 10px; background: #f0f4ff; display: flex; align-items: center; justify-content: center; color: #5a6577; font-size: 1.1rem; cursor: pointer; }
+    .avatar-circle { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0f5fd6, #0a49af); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+    .stat-card { background: #ffffff; border: 1px solid #e9edf5; border-radius: 16px; padding: 22px 20px; position: relative; overflow: hidden; }
+    .stat-card .stat-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; position: absolute; top: 18px; right: 18px; }
+    .stat-card .stat-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7d8ca6; margin-bottom: 8px; }
+    .stat-card .stat-value { font-size: 2rem; font-weight: 800; color: #13203b; line-height: 1; }
+    .stat-card .stat-sub { font-size: 0.78rem; color: #7d8ca6; margin-top: 4px; }
+    .stat-card .stat-change { font-size: 0.78rem; color: #16a34a; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+    .stat-card .currency-icon { font-size: 2.2rem; color: #dde4f0; position: absolute; bottom: 8px; right: 20px; }
+    .chart-card { background: #13203b; border-radius: 16px; padding: 22px 20px; color: #fff; }
+    .chart-card .stat-label { color: #8899b0; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 12px; height: 80px; margin-top: 16px; }
+    .chart-bar { flex: 1; border-radius: 6px; min-width: 32px; }
+    .chart-legend { display: flex; gap: 16px; margin-top: 14px; font-size: 0.72rem; color: #8899b0; }
+    .chart-legend span { display: flex; align-items: center; gap: 6px; }
+    .chart-legend .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .orders-card { background: #ffffff; border: 1px solid #e9edf5; border-radius: 16px; padding: 24px; }
+    .orders-card h3 { font-size: 1.2rem; font-weight: 800; color: #13203b; margin: 0; }
+    .orders-card .table th { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7d8ca6; border-bottom: 1px solid #e9edf5; padding: 12px 8px; }
+    .orders-card .table td { padding: 14px 8px; vertical-align: middle; border-bottom: 1px solid #f4f6fc; font-size: 0.88rem; }
+    .client-avatar { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.78rem; }
+    .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+    .status-badge .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .status-attente { background: #fef3e2; color: #b45309; } .status-attente .dot { background: #b45309; }
+    .status-cours { background: #e8f4fd; color: #0369a1; } .status-cours .dot { background: #0369a1; }
+    .status-prete { background: #e8fbe8; color: #16a34a; } .status-prete .dot { background: #16a34a; }
+    .status-termine { background: #f0f0f0; color: #555; } .status-termine .dot { background: #555; }
+    .action-card { background: linear-gradient(135deg, #0f5fd6 0%, #0a49af 100%); border-radius: 16px; padding: 24px; color: #fff; }
+    .action-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .action-card p { font-size: 0.85rem; opacity: 0.9; line-height: 1.6; margin-bottom: 16px; }
+    .action-card .btn { background: #ffffff; color: #0b4db7; border: none; border-radius: 10px; padding: 10px 20px; font-weight: 700; font-size: 0.85rem; }
+    .action-card .btn:hover { background: #f0f4ff; }
+    .activity-card { background: #ffffff; border: 1px solid #e9edf5; border-radius: 16px; padding: 24px; }
+    .activity-card h4 { font-size: 1rem; font-weight: 700; color: #13203b; margin-bottom: 16px; }
+    .activity-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f4f6fc; }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+    .activity-item strong { font-size: 0.85rem; color: #13203b; display: block; }
+    .activity-item span { font-size: 0.78rem; color: #7d8ca6; }
+    .activity-item .time { font-size: 0.72rem; color: #aab7c9; white-space: nowrap; }
+    .link-blue { color: #0b4db7; font-weight: 600; font-size: 0.88rem; text-decoration: none; cursor: pointer; }
+    .link-blue:hover { text-decoration: underline; }
+    .btn-action-sm { padding: 4px 10px; font-size: 0.75rem; border-radius: 8px; font-weight: 600; }
+    .empty-state { text-align: center; padding: 40px 20px; color: #7d8ca6; }
+    .empty-state i { font-size: 3rem; margin-bottom: 12px; display: block; }
+    /* Pages cachées */
+    .admin-page { display: none; }
+    .admin-page.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787247122/logo_bide.png" alt="Bidè" style="height: 120px;">
+      <span style="font-size:0.78rem; color:#7d8ca6; font-weight:500;">Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" data-page="dashboard" onclick="switchPage('dashboard')">
+            <i class="fa-solid fa-grid-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="commandes" onclick="switchPage('commandes')">
+            <i class="fa-solid fa-cart-shopping"></i> Commandes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="clients" onclick="switchPage('clients')">
+            <i class="fa-solid fa-users"></i> Clients
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-page="promos" onclick="switchPage('promos')">
+            <i class="fa-solid fa-tags"></i> Codes Promo
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <a class="nav-link" href="index.html">
+            <i class="fa-solid fa-arrow-left"></i> Retour au site
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============================================================
+       PAGE DASHBOARD
+       ============================================================ -->
+  <main class="main-content">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div>
+        <h1>Aperçu du jour</h1>
+        <p>Bienvenue sur le tableau de bord de Bidè. Voici un résumé de l'activité.</p>
+      </div>
+      <div class="top-bar-actions">
+        <button class="btn-rapport" onclick="exportReport()">
+          <i class="fa-solid fa-download"></i> Rapport complet
+        </button>
+        <div class="icon-bell"><i class="fa-regular fa-bell"></i></div>
+        <div class="avatar-circle">AD</div>
+      </div>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="row g-4 mb-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#e8f0fe; color:#0b4db7;">
+            <i class="fa-solid fa-money-bill-wave"></i>
+          </div>
+          <div class="stat-label">Chiffre d'affaires</div>
+          <div class="stat-value" id="stat-ca">0 FCFA</div>
+          <div class="currency-icon">CFA</div>
+          <div class="stat-change" id="stat-ca-change"><i class="fa-solid fa-arrow-trend-up"></i> +12% vs hier</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#fef3e2; color:#b45309;">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <div class="stat-label">En attente</div>
+          <div class="stat-value" id="stat-attente">0</div>
+          <div class="stat-sub">Commandes à traiter</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#e8fbe8; color:#16a34a;">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="stat-label">Terminées</div>
+          <div class="stat-value" id="stat-termine">0</div>
+          <div class="stat-sub">Total complétées</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="chart-card">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="stat-label">Répartition</div>
+            <i class="fa-solid fa-chart-pie" style="color:#5a7aa5;"></i>
+          </div>
+          <div class="chart-bars" id="chart-bars"></div>
+          <div class="chart-legend">
+            <span><span class="dot" style="background:#0b4db7;"></span> Lavage</span>
+            <span><span class="dot" style="background:#16a34a;"></span> Pressing</span>
+            <span><span class="dot" style="background:#f59e0b;"></span> Entretien</span>
+            <span><span class="dot" style="background:#8b5cf6;"></span> Ménage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERS + SIDEBAR -->
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="orders-card">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3>Commandes récentes</h3>
+            <button class="btn btn-light btn-sm" onclick="loadDashboard()"><i class="fa-solid fa-rotate"></i> Rafraîchir</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Client</th>
+                  <th>Service</th>
+                  <th>Montant</th>
+                  <th>Statut</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-orders-tbody">
+                <tr><td colspan="6" class="empty-state"><i class="fa-solid fa-inbox"></i>Aucune commande pour l'instant</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center mt-3">
+            <a class="link-blue" onclick="switchPage('commandes')">Voir toutes les commandes</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="action-card mb-4">
+          <h4><i class="fa-solid fa-bolt me-1"></i> Agir maintenant</h4>
+          <p id="action-urgency-text">Aucune urgence pour le moment.</p>
+          <button class="btn" onclick="switchPage('commandes')"><i class="fa-solid fa-eye me-1"></i> Voir les commandes</button>
+        </div>
+
+        <div class="activity-card">
+          <h4><i class="fa-solid fa-bolt text-primary me-1"></i> Activité récente</h4>
+          <div id="activity-list">
+            <div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i>Aucune activité</div>
+          </div>
+        </div>
+
+        <!-- CARTE OPENSTREETMAP -->
+        <div class="activity-card mt-4">
+          <h4><i class="fa-solid fa-map-location-dot text-primary me-1"></i> Zone de service</h4>
+          <p class="text-muted extra-small mb-3">Bidè opère à Lomé et environs. Cliquez sur la carte pour localiser une commande.</p>
+          <div style="border-radius:12px; overflow:hidden; border:1px solid #e9edf5;">
+            <iframe 
+              src="https://www.openstreetmap.org/export/embed.html?bbox=1.15,6.08,1.30,6.23&layer=mapnik&marker=6.17,1.22" 
+              style="width:100%; height:280px; border:none;" 
+              loading="lazy" 
+              referrerpolicy="no-referrer">
+            </iframe>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <span class="extra-small text-muted"><i class="fa-solid fa-location-dot text-primary me-1"></i>Lomé, Togo</span>
+            <a href="https://www.openstreetmap.org/?mlat=6.17&mlon=1.22#map=12/6.17/1.22" target="_blank" class="link-blue extra-small">Ouvrir dans OpenStreetMap <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       PAGE COMMANDES (cachée par défaut)
+       ============================================================ -->
+  <div class="main-content admin-page" id="page-commandes">
+    <div class="top-bar">
+      <div>
+        <h1>Toutes les commandes</h1>
+        <p>Gérez et suivez toutes les commandes de vos clients.</p>
+      </div>
+      <div class="top-bar-actions">
+        <select class="form-select form-select-sm" id="filter-status" style="width:auto;" onchange="loadAllOrders()">
+          <option value="all">Tous les statuts</option>
+          <option value="pending">En attente</option>
+          <option value="processing">En cours</option>
+          <option value="delivered">Livré</option>
+          <option value="cancelled">Annulé</option>
+        </select>
+        <button class="btn btn-light btn-sm" onclick="loadAllOrders()"><i class="fa-solid fa-rotate"></i></button>
+      </div>
+    </div>
+    <div class="orders-card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Client</th>
+              <th>Service</th>
+              <th>Montant</th>
+              <th>Date</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="all-orders-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PAGE CLIENTS (cachée par défaut)
+       ============================================================ -->
+  <div class="main-content admin-page" id="page-clients">
+    <div class="top-bar">
+      <div>
+        <h1>Clients</h1>
+        <p>Liste de tous les clients inscrits.</p>
+      </div>
+    </div>
+    <div class="orders-card">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>WhatsApp</th>
+              <th>Commandes</th>
+              <th>Total dépensé</th>
+            </tr>
+          </thead>
+          <tbody id="clients-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PAGE CODES PROMO (cachee par defaut)
+       ============================================================ -->
+  <div class="main-content admin-page" id="page-promos">
+    <div class="top-bar">
+      <div>
+        <h1>Codes Promo</h1>
+        <p>Gérez les demandes de codes promo des partenaires et contrôlez les codes actifs.</p>
+      </div>
+      <div class="top-bar-actions">
+        <select class="form-select form-select-sm" id="filter-promo-status" style="width:auto;" onchange="loadPromos()">
+          <option value="all">Tous les statuts</option>
+          <option value="pending">En attente</option>
+          <option value="approved">Approuvé</option>
+          <option value="rejected">Refusé</option>
+        </select>
+        <button class="btn btn-light btn-sm" onclick="loadPromos()"><i class="fa-solid fa-rotate"></i></button>
+      </div>
+    </div>
+
+    <!-- STATS PROMOS -->
+    <div class="row g-4 mb-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#e8f0fe; color:#0b4db7;"><i class="fa-solid fa-clock"></i></div>
+          <div class="stat-label">En attente</div>
+          <div class="stat-value" id="promo-stat-pending">0</div>
+          <div class="stat-sub">Demandes à valider</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#e8fbe8; color:#16a34a;"><i class="fa-solid fa-check-circle"></i></div>
+          <div class="stat-label">Actifs</div>
+          <div class="stat-value" id="promo-stat-active">0</div>
+          <div class="stat-sub">Codes validés</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#fef3e2; color:#b45309;"><i class="fa-solid fa-coins"></i></div>
+          <div class="stat-label">Total commissions</div>
+          <div class="stat-value" id="promo-stat-commissions">0 FCFA</div>
+          <div class="stat-sub">Versées aux partenaires</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:#f3e8ff; color:#7c3aed;"><i class="fa-solid fa-percent"></i></div>
+          <div class="stat-label">Utilisations</div>
+          <div class="stat-value" id="promo-stat-uses">0</div>
+          <div class="stat-sub">Codes utilisés</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEMANDES EN ATTENTE -->
+    <div class="orders-card mb-4" id="pending-promos-card">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0"><i class="fa-solid fa-inbox text-warning me-2"></i>Demandes en attente</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Demandeur</th>
+              <th>Code demandé</th>
+              <th>Réduction</th>
+              <th>Commission</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="pending-promos-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MODAL VALIDATION PROMO -->
+    <div class="modal fade" id="promoModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">Valider le code promo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="bg-light rounded-3 p-3 mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center bg-primary text-white" style="width:44px;height:44px;">
+                  <i class="fa-solid fa-tag"></i>
+                </div>
+                <div>
+                  <strong class="d-block" id="modal-promo-code">CODE</strong>
+                  <span class="small text-muted" id="modal-promo-partner">Demandeur</span>
+                </div>
+              </div>
+              <!-- Moyen de réception des commissions -->
+              <div class="mt-3 pt-3 border-top" id="modal-promo-pay-section" style="display:none;">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <i class="fa-solid fa-wallet text-primary"></i>
+                  <strong class="small text-dark">Moyen de réception des commissions</strong>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                  <span class="badge bg-primary-subtle text-primary px-3 py-2" id="modal-promo-pay-method">—</span>
+                  <span class="small text-muted" id="modal-promo-pay-account">—</span>
+                </div>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Réduction client (%) *</label>
+                <input type="number" class="form-control rounded-3" id="modal-promo-reduction" min="1" max="50" required>
+                <div class="form-text">Le pourcentage de réduction pour les clients.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Commission partenaire (%) *</label>
+                <input type="number" class="form-control rounded-3" id="modal-promo-commission" min="1" max="30" required>
+                <div class="form-text">Le pourcentage de commission pour le partenaire.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Durée de validité (jours) *</label>
+                <input type="number" class="form-control rounded-3" id="modal-promo-validity" min="7" max="365" value="30" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold small">Solde minimum (FCFA)</label>
+                <input type="number" class="form-control rounded-3" id="modal-promo-min-amount" value="0">
+                <div class="form-text">Montant min. de la commande pour utiliser le code.</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-danger rounded-3 me-1" onclick="rejectPromoFromModal()">Refuser</button>
+            <button type="button" class="btn btn-success rounded-3" onclick="approvePromoFromModal()">Approuver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOUS LES CODES -->
+    <div class="orders-card">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0"><i class="fa-solid fa-tags text-primary me-2"></i>Tous les codes promo</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Partenaire</th>
+              <th>Réduction</th>
+              <th>Commission</th>
+              <th>Paiement</th>
+              <th>Utilisations</th>
+              <th>Gains partenaire</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="all-promos-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ============================================================
+    // ADMIN DASHBOARD — Données dynamiques depuis localStorage
+    // TODO: Remplacer localStorage par Supabase plus tard
+    // ============================================================
+
+    function getOrders() {
+      const stored = localStorage.getItem('bide_orders');
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function getUsers() {
+      const stored = localStorage.getItem('bide_users');
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function formatCFA(amount) {
+      return amount.toLocaleString('fr-FR') + ' FCFA';
+    }
+
+    function getStatusBadge(status) {
+      const map = {
+        pending: '<span class="status-badge status-attente"><span class="dot"></span> En attente</span>',
+        processing: '<span class="status-badge status-cours"><span class="dot"></span> En cours</span>',
+        delivered: '<span class="status-badge status-prete"><span class="dot"></span> Livré</span>',
+        cancelled: '<span class="status-badge status-termine"><span class="dot"></span> Annulé</span>'
+      };
+      return map[status] || map.pending;
+    }
+
+    function getServiceIcon(service) {
+      const map = {
+        'Lavage Auto': '<i class="fa-solid fa-car-side text-primary me-1"></i>',
+        'Pressing': '<i class="fa-solid fa-shirt text-info me-1"></i>',
+        'Entretien Mécanique': '<i class="fa-solid fa-wrench text-warning me-1"></i>',
+        'Ménage Immobilier': '<i class="fa-solid fa-broom text-success me-1"></i>'
+      };
+      return map[service] || '<i class="fa-solid fa-cube text-secondary me-1"></i>';
+    }
+
+    function getInitials(name) {
+      return name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    }
+
+    function getAvatarColor(idx) {
+      const colors = ['#e8f0fe|#0b4db7', '#e8fbe8|#16a34a', '#fef3e2|#b45309', '#f3e8ff|#7c3aed', '#e8f4fd|#0369a1'];
+      return colors[idx % colors.length].split('|');
+    }
+
+    // ============================================================
+    // CHANGER LE STATUT D'UNE COMMANDE
+    // ============================================================
+    function changeOrderStatus(orderId, newStatus) {
+      const orders = getOrders();
+      const idx = orders.findIndex(o => o.id === orderId);
+      if (idx === -1) return;
+      orders[idx].status = newStatus;
+      localStorage.setItem('bide_orders', JSON.stringify(orders));
+      loadDashboard();
+      loadAllOrders();
+    }
+
+    // ============================================================
+    // PAGE DASHBOARD
+    // ============================================================
+    function loadDashboard() {
+      const orders = getOrders();
+
+      // Stats
+      const totalCA = orders.reduce((sum, o) => sum + (o.total || 0), 0);
+      const attente = orders.filter(o => o.status === 'pending').length;
+      const termine = orders.filter(o => o.status === 'delivered').length;
+
+      document.getElementById('stat-ca').textContent = formatCFA(totalCA);
+      document.getElementById('stat-attente').textContent = attente;
+      document.getElementById('stat-termine').textContent = termine;
+
+      // Urgence
+      const urgentes = orders.filter(o => o.status === 'pending');
+      document.getElementById('action-urgency-text').textContent =
+        urgentes.length > 0
+          ? urgentes.length + ' commande(s) nécessitent votre attention.'
+          : 'Aucune urgence pour le moment.';
+
+      // Chart bars
+      const lavage = orders.filter(o => o.service === 'Lavage Auto').length;
+      const pressing = orders.filter(o => o.service === 'Pressing').length;
+      const entretien = orders.filter(o => o.service === 'Entretien Mécanique').length;
+      const menage = orders.filter(o => o.service === 'Ménage Immobilier').length;
+      const maxCount = Math.max(lavage, pressing, entretien, menage, 1);
+      document.getElementById('chart-bars').innerHTML =
+        '<div class="chart-bar" style="height:' + (lavage / maxCount * 100) + '%; background:#0b4db7;"></div>' +
+        '<div class="chart-bar" style="height:' + (pressing / maxCount * 100) + '%; background:#16a34a;"></div>' +
+        '<div class="chart-bar" style="height:' + (entretien / maxCount * 100) + '%; background:#f59e0b;"></div>' +
+        '<div class="chart-bar" style="height:' + (menage / maxCount * 100) + '%; background:#8b5cf6;"></div>';
+
+      // 5 dernières commandes
+      const recent = orders.slice(-5).reverse();
+      const tbody = document.getElementById('dashboard-orders-tbody');
+      if (recent.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><i class="fa-solid fa-inbox"></i>Aucune commande pour l\'instant</td></tr>';
+      } else {
+        tbody.innerHTML = recent.map((o, i) => {
+          const bg = getAvatarColor(i);
+          return '<tr>' +
+            '<td><span class="link-blue">#' + o.id + '</span></td>' +
+            '<td><div class="d-flex align-items-center gap-2"><div class="client-avatar" style="background:' + bg[0] + ';color:' + bg[1] + ';">' + getInitials(o.nom || 'U') + '</div><div><strong>' + (o.nom || 'N/A') + ' ' + (o.prenom || '') + '</strong>' + (o.address ? '<br><span class="extra-small text-muted"><i class="fa-solid fa-location-dot"></i> ' + o.address.substring(0, 40) + '</span>' : '') + '</div></div></td>' +
+            '<td>' + getServiceIcon(o.service) + ' ' + (o.service || 'N/A') + '</td>' +
+            '<td><strong>' + formatCFA(o.total || 0) + '</strong></td>' +
+            '<td>' + getStatusBadge(o.status) + '</td>' +
+            '<td>' +
+              (o.status === 'pending' ? '<button class="btn btn-success btn-action-sm me-1" onclick="changeOrderStatus(\'' + o.id + '\',\'processing\')"><i class="fa-solid fa-play"></i></button>' : '') +
+              (o.status === 'processing' ? '<button class="btn btn-primary btn-action-sm me-1" onclick="changeOrderStatus(\'' + o.id + '\',\'delivered\')"><i class="fa-solid fa-check"></i></button>' : '') +
+              '<button class="btn btn-danger btn-action-sm" onclick="changeOrderStatus(\'' + o.id + '\',\'cancelled\')"><i class="fa-solid fa-xmark"></i></button>' +
+            '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      // Activité récente
+      const actList = document.getElementById('activity-list');
+      const recentForActivity = orders.slice(-3).reverse();
+      if (recentForActivity.length === 0) {
+        actList.innerHTML = '<div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i>Aucune activité</div>';
+      } else {
+        actList.innerHTML = recentForActivity.map((o, i) => {
+          const dotColor = o.status === 'delivered' ? '#16a34a' : o.status === 'processing' ? '#0b4db7' : '#b45309';
+          const label = o.status === 'delivered' ? 'Commande livrée' : o.status === 'processing' ? 'Commande en cours' : 'Nouvelle commande';
+          return '<div class="activity-item">' +
+            '<div class="activity-dot" style="background:' + dotColor + ';"></div>' +
+            '<div class="flex-grow-1"><strong>' + label + ' #' + o.id + '</strong><span>' + (o.service || '') + ' - ' + (o.nom || '') + '</span></div>' +
+            '<span class="time">' + (o.created_at ? new Date(o.created_at).toLocaleDateString('fr-FR') : '') + '</span>' +
+          '</div>';
+        }).join('');
+      }
+    }
+
+    // ============================================================
+    // PAGE COMMANDES — Toutes les commandes
+    // ============================================================
+    function loadAllOrders() {
+      let orders = getOrders();
+      const filter = document.getElementById('filter-status')?.value || 'all';
+      if (filter !== 'all') orders = orders.filter(o => o.status === filter);
+      orders = orders.reverse();
+
+      const tbody = document.getElementById('all-orders-tbody');
+      if (orders.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fa-solid fa-inbox"></i>Aucune commande trouvée</td></tr>';
+        return;
+      }
+      tbody.innerHTML = orders.map((o, i) => {
+        const bg = getAvatarColor(i);
+        return '<tr>' +
+          '<td><span class="link-blue">#' + o.id + '</span></td>' +
+          '<td><div class="d-flex align-items-center gap-2"><div class="client-avatar" style="background:' + bg[0] + ';color:' + bg[1] + ';">' + getInitials(o.nom || 'U') + '</div><div><strong>' + (o.nom || 'N/A') + ' ' + (o.prenom || '') + '</strong><br><span class="extra-small text-muted">' + (o.email || '') + '</span>' + (o.address ? '<br><span class="extra-small text-primary"><i class="fa-solid fa-location-dot"></i> ' + o.address.substring(0, 50) + '</span>' : '') + '</div></div></td>' +
+          '<td>' + getServiceIcon(o.service) + ' ' + (o.service || 'N/A') + (o.plan ? ' - ' + o.plan : '') + '</td>' +
+          '<td><strong>' + formatCFA(o.total || 0) + '</strong></td>' +
+          '<td>' + (o.created_at ? new Date(o.created_at).toLocaleDateString('fr-FR') : '-') + '</td>' +
+          '<td>' + getStatusBadge(o.status) + '</td>' +
+          '<td class="text-nowrap">' +
+            (o.status === 'pending' ? '<button class="btn btn-success btn-action-sm me-1" title="Accepter" onclick="changeOrderStatus(\'' + o.id + '\',\'processing\')"><i class="fa-solid fa-play"></i></button>' : '') +
+            (o.status === 'processing' ? '<button class="btn btn-primary btn-action-sm me-1" title="Terminer" onclick="changeOrderStatus(\'' + o.id + '\',\'delivered\')"><i class="fa-solid fa-check"></i></button>' : '') +
+            (o.status !== 'cancelled' && o.status !== 'delivered' ? '<button class="btn btn-danger btn-action-sm" title="Annuler" onclick="changeOrderStatus(\'' + o.id + '\',\'cancelled\')"><i class="fa-solid fa-xmark"></i></button>' : '') +
+          '</td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    // ============================================================
+    // PAGE CLIENTS
+    // ============================================================
+    function loadClients() {
+      const users = getUsers();
+      const orders = getOrders();
+      const tbody = document.getElementById('clients-tbody');
+
+      if (users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty-state"><i class="fa-solid fa-users"></i>Aucun client inscrit</td></tr>';
+        return;
+      }
+      tbody.innerHTML = users.map(u => {
+        const userOrders = orders.filter(o => o.user_id === u.id);
+        const totalSpent = userOrders.reduce((sum, o) => sum + (o.total || 0), 0);
+        return '<tr>' +
+          '<td><strong>' + (u.nom || '') + ' ' + (u.prenom || '') + '</strong></td>' +
+          '<td>' + (u.email || '-') + '</td>' +
+          '<td>' + (u.whatsapp || '-') + '</td>' +
+          '<td>' + userOrders.length + '</td>' +
+          '<td><strong>' + formatCFA(totalSpent) + '</strong></td>' +
+        '</tr>';
+      }).join('');
+    }
+
+    // ============================================================
+    // NAVIGATION ENTRE PAGES
+    // ============================================================
+    // ============================================================
+    // CODES PROMO — Gestion
+    // ============================================================
+    let currentPromoId = null;
+
+    function getPromos() {
+      return JSON.parse(localStorage.getItem('bide_promo_demandes') || '[]');
+    }
+
+    function savePromos(promos) {
+      localStorage.setItem('bide_promo_demandes', JSON.stringify(promos));
+    }
+
+    function getActivePromoCodes() {
+      const promos = getPromos();
+      return promos.filter(p => p.status === 'approved');
+    }
+
+    function loadPromos() {
+      const promos = getPromos();
+      const filter = document.getElementById('filter-promo-status')?.value || 'all';
+
+      // Stats
+      const pending = promos.filter(p => p.status === 'pending').length;
+      const active = promos.filter(p => p.status === 'approved').length;
+      const totalCommissions = promos.reduce((sum, p) => sum + (p.total_earned || 0), 0);
+      const totalUses = promos.reduce((sum, p) => sum + (p.total_used || 0), 0);
+
+      document.getElementById('promo-stat-pending').textContent = pending;
+      document.getElementById('promo-stat-active').textContent = active;
+      document.getElementById('promo-stat-commissions').textContent = formatCFA(totalCommissions);
+      document.getElementById('promo-stat-uses').textContent = totalUses;
+
+      // Demandes en attente
+      const pendingPromos = promos.filter(p => p.status === 'pending');
+      const pendingTbody = document.getElementById('pending-promos-tbody');
+      if (pendingPromos.length === 0) {
+        pendingTbody.innerHTML = '<tr><td colspan="6" class="empty-state"><i class="fa-solid fa-check-circle text-success"></i>Aucune demande en attente</td></tr>';
+        document.getElementById('pending-promos-card').style.display = '';
+      } else {
+        pendingTbody.innerHTML = pendingPromos.map(p =>
+          '<tr>' +
+          '<td><strong>' + p.nom + '</strong><br><span class="extra-small text-muted">' + p.email + '</span></td>' +
+          '<td><span class="badge bg-primary px-3 py-2 fw-bold" style="letter-spacing:1px;">' + p.code + '</span></td>' +
+          '<td>' + p.requested_reduction + '%</td>' +
+          '<td>' + p.requested_commission + '%</td>' +
+          '<td>' + new Date(p.created_at).toLocaleDateString('fr-FR') + '</td>' +
+          '<td>' +
+            '<button class="btn btn-success btn-action-sm me-1" title="Valider" onclick="openPromoModal(\'' + p.id + '\')"><i class="fa-solid fa-check"></i></button>' +
+            '<button class="btn btn-danger btn-action-sm" title="Refuser" onclick="rejectPromo(\'' + p.id + '\')"><i class="fa-solid fa-xmark"></i></button>' +
+          '</td>' +
+          '</tr>'
+        ).join('');
+      }
+
+      // Tous les codes
+      let filteredPromos = filter === 'all' ? promos : promos.filter(p => p.status === filter);
+      filteredPromos = filteredPromos.reverse();
+      const allTbody = document.getElementById('all-promos-tbody');
+      if (filteredPromos.length === 0) {
+        allTbody.innerHTML = '<tr><td colspan="9" class="empty-state"><i class="fa-solid fa-inbox"></i>Aucun code promo</td></tr>';
+      } else {
+        const methodLabels = {
+          'mobile_money': '<i class="fa-solid fa-mobile-screen-button text-primary me-1"></i>Mobile Money',
+          'virement': '<i class="fa-solid fa-building-columns text-success me-1"></i>Virement',
+          'cash': '<i class="fa-solid fa-money-bill-wave text-warning me-1"></i>Cash'
+        };
+        allTbody.innerHTML = filteredPromos.map(p => {
+          const statusBadge = p.status === 'approved'
+            ? '<span class="status-badge status-prete"><span class="dot"></span> Actif</span>'
+            : p.status === 'pending'
+            ? '<span class="status-badge status-attente"><span class="dot"></span> En attente</span>'
+            : '<span class="status-badge status-termine"><span class="dot"></span> Refusé</span>';
+          const payInfo = p.pay_method ? (methodLabels[p.pay_method] || p.pay_method) + '<br><span class="extra-small text-muted">' + (p.pay_account || '') + '</span>' : '<span class="text-muted">—</span>';
+          return '<tr>' +
+            '<td><span class="badge bg-primary px-3 py-2 fw-bold" style="letter-spacing:1px;">' + p.code + '</span></td>' +
+            '<td><strong>' + p.nom + '</strong><br><span class="extra-small text-muted">' + p.whatsapp + '</span></td>' +
+            '<td>' + (p.admin_reduction || p.requested_reduction) + '%</td>' +
+            '<td>' + (p.admin_commission || p.requested_commission) + '%</td>' +
+            '<td>' + payInfo + '</td>' +
+            '<td>' + (p.total_used || 0) + '</td>' +
+            '<td><strong>' + formatCFA(p.total_earned || 0) + '</strong></td>' +
+            '<td>' + statusBadge + '</td>' +
+            '<td>' +
+              (p.status === 'approved' ? '<button class="btn btn-danger btn-action-sm" title="Désactiver" onclick="deactivatePromo(\'' + p.id + '\')"><i class="fa-solid fa-ban"></i></button>' : '') +
+            '</td>' +
+          '</tr>';
+        }).join('');
+      }
+    }
+
+    function openPromoModal(id) {
+      currentPromoId = id;
+      const promos = getPromos();
+      const promo = promos.find(p => p.id === id);
+      if (!promo) return;
+      document.getElementById('modal-promo-code').textContent = promo.code;
+      document.getElementById('modal-promo-partner').textContent = promo.nom + ' — ' + promo.email;
+      document.getElementById('modal-promo-reduction').value = promo.requested_reduction || 10;
+      document.getElementById('modal-promo-commission').value = promo.requested_commission || 5;
+      document.getElementById('modal-promo-validity').value = 30;
+      document.getElementById('modal-promo-min-amount').value = 0;
+      // Afficher le moyen de réception des commissions.
+      const paySection = document.getElementById('modal-promo-pay-section');
+      const payMethodEl = document.getElementById('modal-promo-pay-method');
+      const payAccountEl = document.getElementById('modal-promo-pay-account');
+      if (promo.pay_method) {
+        paySection.style.display = '';
+        const methodLabels = {
+          'mobile_money': '<i class="fa-solid fa-mobile-screen-button me-1"></i> Mobile Money',
+          'virement': '<i class="fa-solid fa-building-columns me-1"></i> Virement bancaire',
+          'cash': '<i class="fa-solid fa-money-bill-wave me-1"></i> Retrait cash'
+        };
+        payMethodEl.innerHTML = methodLabels[promo.pay_method] || promo.pay_method;
+        payAccountEl.textContent = promo.pay_account || 'Non renseigné';
+      } else {
+        paySection.style.display = 'none';
+      }
+      const modal = new bootstrap.Modal(document.getElementById('promoModal'));
+      modal.show();
+    }
+
+    function approvePromoFromModal() {
+      const reduction = document.getElementById('modal-promo-reduction').value;
+      const commission = document.getElementById('modal-promo-commission').value;
+      const validity = document.getElementById('modal-promo-validity').value;
+      const minAmount = document.getElementById('modal-promo-min-amount').value;
+
+      if (!reduction || !commission || !validity) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+
+      const promos = getPromos();
+      const idx = promos.findIndex(p => p.id === currentPromoId);
+      if (idx === -1) return;
+
+      promos[idx].status = 'approved';
+      promos[idx].admin_reduction = parseInt(reduction);
+      promos[idx].admin_commission = parseInt(commission);
+      promos[idx].admin_validity = parseInt(validity);
+      promos[idx].admin_min_amount = parseInt(minAmount) || 0;
+      promos[idx].approved_at = new Date().toISOString();
+      promos[idx].expires_at = new Date(Date.now() + parseInt(validity) * 86400000).toISOString();
+
+      savePromos(promos);
+      bootstrap.Modal.getInstance(document.getElementById('promoModal'))?.hide();
+      loadPromos();
+      alert('✅ Code ' + promos[idx].code + ' approuvé ! Réduction: ' + reduction + '%, Commission: ' + commission + '%');
+    }
+
+    function rejectPromoFromModal() {
+      const promos = getPromos();
+      const idx = promos.findIndex(p => p.id === currentPromoId);
+      if (idx === -1) return;
+      promos[idx].status = 'rejected';
+      promos[idx].rejected_at = new Date().toISOString();
+      savePromos(promos);
+      bootstrap.Modal.getInstance(document.getElementById('promoModal'))?.hide();
+      loadPromos();
+    }
+
+    function rejectPromo(id) {
+      if (!confirm('Refuser cette demande de code promo ?')) return;
+      const promos = getPromos();
+      const idx = promos.findIndex(p => p.id === id);
+      if (idx === -1) return;
+      promos[idx].status = 'rejected';
+      promos[idx].rejected_at = new Date().toISOString();
+      savePromos(promos);
+      loadPromos();
+    }
+
+    function deactivatePromo(id) {
+      if (!confirm('Désactiver ce code promo ? Le partenaire ne pourra plus gagner de commissions.')) return;
+      const promos = getPromos();
+      const idx = promos.findIndex(p => p.id === id);
+      if (idx === -1) return;
+      promos[idx].status = 'rejected';
+      promos[idx].deactivated_at = new Date().toISOString();
+      savePromos(promos);
+      loadPromos();
+    }
+
+    // ============================================================
+    // NAVIGATION ENTRE PAGES
+    // ============================================================
+    function switchPage(page) {
+      // Cacher toutes les pages
+      document.querySelectorAll('.admin-page').forEach(p => p.classList.remove('active'));
+      // Desactiver tous les liens sidebar
+      document.querySelectorAll('.sidebar-nav .nav-link').forEach(l => l.classList.remove('active'));
+
+      if (page === 'dashboard') {
+        document.querySelector('[data-page="dashboard"]')?.classList.add('active');
+        document.querySelector('.main-content').style.display = '';
+        loadDashboard();
+      } else if (page === 'commandes') {
+        document.querySelector('[data-page="commandes"]')?.classList.add('active');
+        document.querySelector('.main-content').style.display = 'none';
+        document.getElementById('page-commandes').classList.add('active');
+        loadAllOrders();
+      } else if (page === 'clients') {
+        document.querySelector('[data-page="clients"]')?.classList.add('active');
+        document.querySelector('.main-content').style.display = 'none';
+        document.getElementById('page-clients').classList.add('active');
+        loadClients();
+      } else if (page === 'promos') {
+        document.querySelector('[data-page="promos"]')?.classList.add('active');
+        document.querySelector('.main-content').style.display = 'none';
+        document.getElementById('page-promos').classList.add('active');
+        loadPromos();
+      }
+    }
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    loadDashboard();
+  </script>
+</body>
+</html>
