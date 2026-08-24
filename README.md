@@ -118,9 +118,11 @@ Projet réalisé dans le cadre de la formation en développement web à l'ADN pa
 <table>
    <tr>
       <td align="center">
-         <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787337354/Winner.png" width="120" alt="Photo de Winner">
+         <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787337354/7d08ff58-56d7-4b42-9b91-0fb80b13b91c.png" width="120" alt="Photo de Winner">
          <br>
          <b>Komi Godwin SENOU</b>
+         <br>
+         <small>Scrum Master<small>
          <br>
          <small>godwinadkp97@icloud.com</small>
       </td>
@@ -129,6 +131,8 @@ Projet réalisé dans le cadre de la formation en développement web à l'ADN pa
          <br>
          <b>KAKPOVI Dela Nadia</b>
          <br>
+         <small>Front Lead<small>
+         <br>
          <small>kakpovidela0509@gmail.com</small>
       </td>
       <td align="center">
@@ -136,12 +140,16 @@ Projet réalisé dans le cadre de la formation en développement web à l'ADN pa
          <br>
          <b>Kossi Victoire AZONOUTSOU</b>
          <br>
+         <small>JS lead<small>
+         <br>
          <small>samuelazovic@gmail.com</small>
       </td>
       <td align="center">
          <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787337550/549d3974-6937-4008-a881-d912d8537d79.png" width="120" alt="Photo de Isidore">
          <br>
          <b>Komlan Isidore DIDJIGNAN</b>
+         <br>
+         <small>Git Master<small>
          <br>
          <small>isdordjidjigna@gmail.com</small>
       </td>
