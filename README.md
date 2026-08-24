@@ -118,7 +118,11 @@ Projet réalisé dans le cadre de la formation en développement web à l'ADN pa
 <table>
    <tr>
       <td align="center">
+<<<<<<< HEAD
          <img src="https://res.cloudinary.com/wjsni1cc/image/upload/v1787337354/7d08ff58-56d7-4b42-9b91-0fb80b13b91c.png" width="120" alt="Photo de Winner">
+=======
+         <img src[=""](https://res.cloudinary.com/wjsni1cc/image/upload/v1787337354/7d08ff58-56d7-4b42-9b91-0fb80b13b91c.png) width="120" alt="Photo de Winner">
+>>>>>>> d572d10d5c0f99482629c6e23cc9c4c43e463542
          <br>
          <b>Komi Godwin SENOU</b>
          <br>
