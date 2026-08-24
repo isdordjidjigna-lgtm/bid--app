@@ -356,7 +356,7 @@
           <a href="https://wa.me/22897906711" target="_blank" class="btn whatsapp-btn w-100 rounded-pill py-2 fw-semibold d-inline-flex align-items-center justify-content-center"><i class="fa-brands fa-whatsapp"></i> Contacter par WhatsApp</a>
         </div>
       </div>
-      <div class="footer-bottom"><p class="text-secondary mb-0" style="font-size: 0.75rem;">&copy; 2024 Bidè Premium Services. Tous droits réservés.</p></div>
+      <div class="footer-bottom"><p class="text-secondary mb-0" style="font-size: 0.75rem;">&copy; 2026 Bidè Premium Services. Tous droits réservés.</p></div>
     </div>
   </footer>
 
@@ -459,7 +459,7 @@
       }
     }
   </script>
-  <script>
+<script>
     // ============================================================
     // PAGE PARTENAIRE — Demande de code promo
     // TODO: Remplacer localStorage par Supabase plus tard
@@ -478,13 +478,16 @@
           if (existing) {
             showStatus(existing);
             return true;
+          }
+        }
+        return false;
+      } // <- IL MANQUAIT CETTE FERMETURE
 
       function showStatus(demande) {
         const colors = {
           pending: { bg: '#fef3e2', border: '#fbbf24', text: '#92400e', icon: 'fa-clock', label: 'En attente de validation' },
           approved: { bg: '#e8fbe8', border: '#22c55e', text: '#166534', icon: 'fa-check-circle', label: 'Approuvé !' },
           rejected: { bg: '#fef2f2', border: '#ef4444', text: '#991b1b', icon: 'fa-times-circle', label: 'Refusé' }
-
         };
         const s = colors[demande.status] || colors.pending;
         statusDiv.className = 'mb-4 p-3 rounded-3';
@@ -504,7 +507,7 @@
 
         // Désactiver le formulaire
         form.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
-      }
+      } // <- IL MANQUAIT AUSSI CELLE-CI
 
       // Soumettre la demande
       form.addEventListener('submit', function(e) {
@@ -569,7 +572,6 @@
           requested_reduction: reduction,
           requested_commission: commission,
           description: description,
-          // Moyen de réception des commissions
           pay_method: payMethod,
           pay_account: payMethod === 'virement' ? payAccountNumber : (payAccountCode + payAccountNumber),
           status: 'pending',
