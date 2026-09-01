@@ -94,7 +94,7 @@ Puis ouvrir [http://localhost:8080](http://localhost:8080) dans votre navigateur
 ##  Contact
 
 - **Téléphone** : [+228 97 90 67 11](tel:+22897906711)
-- **Email** : [contact@bide.app](mailto:contact@bide.app)
+- **Email** : [contact@bide.app](mailto:samuelazovic@gmail.com)
 - **WhatsApp** : [Contacter via WhatsApp](https://wa.me/22897906711)
 
 ##  Horaires
@@ -131,7 +131,7 @@ Projet réalisé dans le cadre de la formation en développement web à l'ADN pa
          <br>
          <b>KAKPOVI Dela Nadia</b>
          <br>
-         <small>Front Lead<small>
+         <small>Design Lead<small>
          <br>
          <small>kakpovidela0509@gmail.com</small>
       </td>

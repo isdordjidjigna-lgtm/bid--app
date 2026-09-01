@@ -35,26 +35,38 @@
 
 :root {
   /* Palette principale */
-  --primary: #0b5bd3;          /* Bleu principal (liens, boutons, accents) */
-  --primary-dark: #0946a8;     /* Bleu foncé (hover, dégradés) */
-  --primary-light: #e8f0fe;    /* Bleu très clair (fonds légers, badges) */
+  --primary: #0b5bd3;
+  /* Bleu principal (liens, boutons, accents) */
+  --primary-dark: #0946a8;
+  /* Bleu foncé (hover, dégradés) */
+  --primary-light: #e8f0fe;
+  /* Bleu très clair (fonds légers, badges) */
 
   /* Texte */
-  --text-dark: #1a2742;        /* Titres et texte principal */
-  --text-muted: #6b7a94;       /* Texte secondaire, descriptions */
+  --text-dark: #1a2742;
+  /* Titres et texte principal */
+  --text-muted: #6b7a94;
+  /* Texte secondaire, descriptions */
 
   /* Fond & bordures */
-  --bg-page: #f4f6fb;          /* Fond gris-bleu très clair de la page */
-  --border-light: #e4eaf3;     /* Bordures légères (cartes, séparateurs) */
+  --bg-page: #f4f6fb;
+  /* Fond gris-bleu très clair de la page */
+  --border-light: #e4eaf3;
+  /* Bordures légères (cartes, séparateurs) */
 
   /* Border-radius (arrondis) */
-  --radius-lg: 20px;           /* Grand arrondi (cartes, hero, estimateur) */
-  --radius-md: 14px;           /* Arrondi moyen (icônes, inputs) */
-  --radius-sm: 10px;           /* Petit arrondi (badges, boutons) */
+  --radius-lg: 20px;
+  /* Grand arrondi (cartes, hero, estimateur) */
+  --radius-md: 14px;
+  /* Arrondi moyen (icônes, inputs) */
+  --radius-sm: 10px;
+  /* Petit arrondi (badges, boutons) */
 }
 
 /* Reset du box-sizing pour tous les éléments */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 /* Style de base du body : fond, police, couleur, marge */
 body {
@@ -65,10 +77,15 @@ body {
 }
 
 /* Les images ne débordent jamais de leur conteneur */
-img { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 /* Position du "&" dans le titre hero (page d'accueil uniquement) */
-#et { padding-left: 190px; }
+#et {
+  padding-left: 190px;
+}
 
 
 /* ================================================================
@@ -81,11 +98,16 @@ img { max-width: 100%; display: block; }
 
 /* Conteneur principal de la navbar */
 .navbar {
-  background: rgba(255,255,255,0.92) !important;  /* Blanc semi-transparent */
-  backdrop-filter: blur(12px);                     /* Effet flou derrière */
-  box-shadow: 0 2px 12px rgba(11,27,65,0.06);     /* Ombre légère en bas */
-  padding: 6px 0 !important;                       /* Espacement interne réduit */
-  min-height: auto !important;                     /* Hauteur minimale flexible */
+  background: rgba(255, 255, 255, 0.92) !important;
+  /* Blanc semi-transparent */
+  backdrop-filter: blur(12px);
+  /* Effet flou derrière */
+  box-shadow: 0 2px 12px rgba(11, 27, 65, 0.06);
+  /* Ombre légère en bas */
+  padding: 6px 0 !important;
+  /* Espacement interne réduit */
+  min-height: auto !important;
+  /* Hauteur minimale flexible */
 }
 
 /* Disposition flex du conteneur navbar */
@@ -99,7 +121,8 @@ img { max-width: 100%; display: block; }
 .navbar-brand {
   margin: 0 !important;
   padding: 0 !important;
-  flex-shrink: 0;              /* Empêche le logo de rétrécir */
+  flex-shrink: 0;
+  /* Empêche le logo de rétrécir */
 }
 
 /* Taille du logo dans la navbar */
@@ -116,7 +139,9 @@ img { max-width: 100%; display: block; }
 }
 
 /* Supprime l'ombre au clic sur le hamburger */
-.navbar-toggler:focus { box-shadow: none; }
+.navbar-toggler:focus {
+  box-shadow: none;
+}
 
 /* Icône du hamburger (3 barres) en SVG inline, couleur bleue */
 .navbar-toggler-icon {
@@ -130,7 +155,8 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   padding: 6px 12px !important;
   border-radius: 8px;
-  transition: all 0.2s;        /* Transition fluide au survol */
+  transition: all 0.2s;
+  /* Transition fluide au survol */
 }
 
 /* Effet au survol : fond bleu clair + texte bleu */
@@ -165,14 +191,14 @@ img { max-width: 100%; display: block; }
 .btn-primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border: none;
-  box-shadow: 0 4px 14px rgba(11,91,211,0.25);
+  box-shadow: 0 4px 14px rgba(11, 91, 211, 0.25);
   transition: all 0.2s;
 }
 
 /* Effet hover : ombre plus forte + légère élévation */
 .btn-primary:hover {
   background: linear-gradient(135deg, #0a52c4 0%, #083d91 100%);
-  box-shadow: 0 6px 20px rgba(11,91,211,0.35);
+  box-shadow: 0 6px 20px rgba(11, 91, 211, 0.35);
   transform: translateY(-1px);
 }
 
@@ -187,28 +213,37 @@ img { max-width: 100%; display: block; }
 
 /* Conteneur de la section héro */
 .hero-section {
-  position: relative;          /* Pour positionner vidéo et overlay par-dessus */
-  overflow: hidden;            /* Cache les débords de la vidéo */
-  min-height: 520px;           /* Hauteur minimale sur desktop */
+  position: relative;
+  /* Pour positionner vidéo et overlay par-dessus */
+  overflow: hidden;
+  /* Cache les débords de la vidéo */
+  min-height: 520px;
+  /* Hauteur minimale sur desktop */
   padding: 60px 0;
 }
 
 /* Vidéo de fond : plein écran, couvre tout */
 .hero-video {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  z-index: 0;                 /* Derrière l'overlay */
+  z-index: 0;
+  /* Derrière l'overlay */
 }
 
 /* Superposition bleue sur la vidéo pour la lisibilité du texte */
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(126, 167, 243, 0.85) 0%, rgba(11,91,211,0.70) 100%);
-  z-index: 1;                 /* Entre la vidéo et le contenu */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(126, 167, 243, 0.85) 0%, rgba(11, 91, 211, 0.70) 100%);
+  z-index: 1;
+  /* Entre la vidéo et le contenu */
 }
 
 /* Contenu texte au-dessus de l'overlay */
@@ -222,11 +257,15 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255,255,255,0.15);      /* Blanc très transparent */
-  backdrop-filter: blur(8px);               /* Flou derrière */
+  background: rgba(255, 255, 255, 0.15);
+  /* Blanc très transparent */
+  backdrop-filter: blur(8px);
+  /* Flou derrière */
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.25); /* Bordure blanche légère */
-  border-radius: 999px;                     /* Forme pilule */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  /* Bordure blanche légère */
+  border-radius: 999px;
+  /* Forme pilule */
   padding: 6px 16px;
   font-size: 0.72rem;
   font-weight: 700;
@@ -237,7 +276,8 @@ img { max-width: 100%; display: block; }
 
 /* Titre principal du hero : blanc, gras, responsive */
 .hero-title {
-  font-size: clamp(2rem, 4vw, 3rem);        /* Responsive : 2rem mobile → 3rem desktop */
+  font-size: clamp(2rem, 4vw, 3rem);
+  /* Responsive : 2rem mobile → 3rem desktop */
   line-height: 1.1;
   font-weight: 800;
   color: #ffffff;
@@ -248,7 +288,7 @@ img { max-width: 100%; display: block; }
 .hero-subtitle {
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 500px;
   margin-bottom: 24px;
 }
@@ -265,8 +305,9 @@ img { max-width: 100%; display: block; }
 /* Conteneur du carrousel : arrondi + ombre forte */
 #heroCarousel {
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-  overflow: hidden;            /* Masque les débords aux coins arrondis */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  /* Masque les débords aux coins arrondis */
 }
 
 /* Images du carrousel : hauteur fixe, couverture */
@@ -281,7 +322,7 @@ img { max-width: 100%; display: block; }
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   top: 50%;
   bottom: auto;
   transform: translateY(-50%);
@@ -314,12 +355,14 @@ img { max-width: 100%; display: block; }
 
 /* Conteneur de l'estimateur */
 .estimator-wrapper {
-  background: rgba(255,255,255,0.95);       /* Blanc presque opaque */
-  backdrop-filter: blur(10px);               /* Flou derrière */
+  background: rgba(255, 255, 255, 0.95);
+  /* Blanc presque opaque */
+  backdrop-filter: blur(10px);
+  /* Flou derrière */
   border-radius: var(--radius-lg);
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.5);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Titre "ESTIMATION EXPRESS" */
@@ -388,7 +431,8 @@ img { max-width: 100%; display: block; }
   background: #fff;
   border: 1px solid var(--border-light);
   border-radius: 10px;
-  padding: 50px 20px;          /* Grand padding en haut pour l'image */
+  padding: 50px 20px;
+  /* Grand padding en haut pour l'image */
   height: 100%;
   transition: all 0.3s;
   display: flex;
@@ -427,7 +471,8 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted);
   font-size: 0.85rem;
   line-height: 1.6;
-  flex-grow: 1;                /* Prend tout l'espace disponible */
+  flex-grow: 1;
+  /* Prend tout l'espace disponible */
   margin-bottom: 16px;
 }
 
@@ -579,7 +624,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.75rem;
   padding-top: 14px;
   margin-top: 14px;
-  border-top: 1px solid rgba(11,27,65,0.08);
+  border-top: 1px solid rgba(11, 27, 65, 0.08);
 }
 
 
@@ -591,20 +636,32 @@ img { max-width: 100%; display: block; }
    ================================================================ */
 
 /* Texte très petit (0.72rem) */
-.extra-small, .text-xs { font-size: 0.72rem; }
+.extra-small,
+.text-xs {
+  font-size: 0.72rem;
+}
 
 /* Marge négative gauche pour chevaucher les avatars */
-.ms-n2 { margin-left: -0.5rem; }
+.ms-n2 {
+  margin-left: -0.5rem;
+}
 
 /* Curseur main au survol */
-.cursor-pointer { cursor: pointer; }
+.cursor-pointer {
+  cursor: pointer;
+}
 
 /* Avatar rond (image de profil) */
-.avatar { width: 40px; height: 40px; object-fit: cover; }
+.avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
 
 /* Badge "+4k" à côté des avatars */
 .avatar-badge {
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
   font-size: 0.65rem;
   background: var(--primary-light);
   color: var(--primary);
@@ -636,9 +693,11 @@ img { max-width: 100%; display: block; }
 
 /* Cercle de l'étape (numéro ou icône) */
 .step-icon {
-  width: 38px; height: 38px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: #e9eef8;         /* Gris-bleu clair (état inactif) */
+  background: #e9eef8;
+  /* Gris-bleu clair (état inactif) */
   color: #7d8ca6;
   display: flex;
   align-items: center;
@@ -652,7 +711,7 @@ img { max-width: 100%; display: block; }
 .step-item.active .step-icon {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #fff;
-  box-shadow: 0 4px 14px rgba(11,91,211,0.3);
+  box-shadow: 0 4px 14px rgba(11, 91, 211, 0.3);
 }
 
 /* Label sous l'étape (ex: "Diagnostic") */
@@ -660,17 +719,21 @@ img { max-width: 100%; display: block; }
   font-size: 0.7rem;
   font-weight: 600;
   color: #7d8ca6;
-  white-space: nowrap;          /* Empêche le retour à la ligne */
+  white-space: nowrap;
+  /* Empêche le retour à la ligne */
 }
 
 /* Label de l'étape active : texte foncé */
-.step-item.active .step-label { color: var(--text-dark); }
+.step-item.active .step-label {
+  color: var(--text-dark);
+}
 
 /* Ligne de connexion entre deux étapes */
 .step-line {
   flex: 1;
   height: 2px;
-  background: #dde4f0;         /* Gris clair (non franchi) */
+  background: #dde4f0;
+  /* Gris clair (non franchi) */
   margin-bottom: 20px;
   z-index: 1;
 }
@@ -719,26 +782,55 @@ img { max-width: 100%; display: block; }
 
 /* Animation 1 : Zoom + Fondu (scale de 0.85 à 1) */
 @keyframes animZoom {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Animation 2 : Glissement par la droite + Fondu */
 @keyframes animSlideRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Animation 3 : Glissement par le bas + Fondu */
 @keyframes animSlideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Application des animations aux images du carrousel */
-.carousel-item.anim-zoom img { animation: animZoom 0.7s ease-out forwards; }
-.carousel-item.anim-slide-right img { animation: animSlideRight 0.7s ease-out forwards; }
-.carousel-item.anim-slide-up img { animation: animSlideUp 0.7s ease-out forwards; }
+.carousel-item.anim-zoom img {
+  animation: animZoom 0.7s ease-out forwards;
+}
+
+.carousel-item.anim-slide-right img {
+  animation: animSlideRight 0.7s ease-out forwards;
+}
+
+.carousel-item.anim-slide-up img {
+  animation: animSlideUp 0.7s ease-out forwards;
+}
 
 
 /* ================================================================
@@ -763,10 +855,14 @@ img { max-width: 100%; display: block; }
   }
 
   /* Lignes de stepper sans marge en bas */
-  .step-line { margin-bottom: 0; }
+  .step-line {
+    margin-bottom: 0;
+  }
 
   /* Carte panier : position statique (pas de sticky) */
-  .cart-card { position: static; }
+  .cart-card {
+    position: static;
+  }
 }
 
 
@@ -855,6 +951,10 @@ img { max-width: 100%; display: block; }
 
   /* --- CARTES SERVICES MOBILE --- */
   .service-card {
+    padding: 40px 16px;
+  }
+}
+
 /* ================================================================
    BIDÈ PREMIUM SERVICES — FEUILLE DE STYLE PRINCIPALE
    ================================================================
@@ -892,26 +992,38 @@ img { max-width: 100%; display: block; }
 
 :root {
   /* Palette principale */
-  --primary: #0b5bd3;          /* Bleu principal (liens, boutons, accents) */
-  --primary-dark: #0946a8;     /* Bleu foncé (hover, dégradés) */
-  --primary-light: #e8f0fe;    /* Bleu très clair (fonds légers, badges) */
+  --primary: #0b5bd3;
+  /* Bleu principal (liens, boutons, accents) */
+  --primary-dark: #0946a8;
+  /* Bleu foncé (hover, dégradés) */
+  --primary-light: #e8f0fe;
+  /* Bleu très clair (fonds légers, badges) */
 
   /* Texte */
-  --text-dark: #1a2742;        /* Titres et texte principal */
-  --text-muted: #6b7a94;       /* Texte secondaire, descriptions */
+  --text-dark: #1a2742;
+  /* Titres et texte principal */
+  --text-muted: #6b7a94;
+  /* Texte secondaire, descriptions */
 
   /* Fond & bordures */
-  --bg-page: #f4f6fb;          /* Fond gris-bleu très clair de la page */
-  --border-light: #e4eaf3;     /* Bordures légères (cartes, séparateurs) */
+  --bg-page: #f4f6fb;
+  /* Fond gris-bleu très clair de la page */
+  --border-light: #e4eaf3;
+  /* Bordures légères (cartes, séparateurs) */
 
   /* Border-radius (arrondis) */
-  --radius-lg: 20px;           /* Grand arrondi (cartes, hero, estimateur) */
-  --radius-md: 14px;           /* Arrondi moyen (icônes, inputs) */
-  --radius-sm: 10px;           /* Petit arrondi (badges, boutons) */
+  --radius-lg: 20px;
+  /* Grand arrondi (cartes, hero, estimateur) */
+  --radius-md: 14px;
+  /* Arrondi moyen (icônes, inputs) */
+  --radius-sm: 10px;
+  /* Petit arrondi (badges, boutons) */
 }
 
 /* Reset du box-sizing pour tous les éléments */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 /* Style de base du body : fond, police, couleur, marge */
 body {
@@ -922,10 +1034,15 @@ body {
 }
 
 /* Les images ne débordent jamais de leur conteneur */
-img { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 /* Position du "&" dans le titre hero (page d'accueil uniquement) */
-#et { padding-left: 190px; }
+#et {
+  padding-left: 190px;
+}
 
 
 /* ================================================================
@@ -935,11 +1052,16 @@ img { max-width: 100%; display: block; }
    ================================================================ */
 
 .navbar {
-  background: rgba(255,255,255,0.92) !important;  /* Blanc semi-transparent */
-  backdrop-filter: blur(12px);                     /* Effet flou derrière */
-  padding: 6px 0 !important;                       /* Espacement interne réduit */
-  min-height: auto !important;                     /* Hauteur minimale flexible */
+  background: rgba(255, 255, 255, 0.92) !important;
+  /* Blanc semi-transparent */
+  backdrop-filter: blur(12px);
+  /* Effet flou derrière */
+  padding: 6px 0 !important;
+  /* Espacement interne réduit */
+  min-height: auto !important;
+  /* Hauteur minimale flexible */
 }
+
 /* Disposition flex du conteneur navbar */
 .navbar .container-xl {
   display: flex;
@@ -951,7 +1073,9 @@ img { max-width: 100%; display: block; }
 .navbar-brand {
   margin: 0 !important;
   padding: 0 !important;
-  flex-shrink: 0;              /* Empêche le logo de rétrécir */
+  flex-shrink: 0;
+  /* Empêche le logo de rétrécir */
+}
 
 /* Taille du logo dans la navbar */
 .navbar-brand img {
@@ -967,7 +1091,9 @@ img { max-width: 100%; display: block; }
 }
 
 /* Supprime l'ombre au clic sur le hamburger */
-.navbar-toggler:focus { box-shadow: none; }
+.navbar-toggler:focus {
+  box-shadow: none;
+}
 
 /* Icône du hamburger (3 barres) en SVG inline, couleur bleue */
 .navbar-toggler-icon {
@@ -981,7 +1107,8 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   padding: 6px 12px !important;
   border-radius: 8px;
-  transition: all 0.2s;        /* Transition fluide au survol */
+  transition: all 0.2s;
+  /* Transition fluide au survol */
 }
 
 /* Effet au survol : fond bleu clair + texte bleu */
@@ -1016,14 +1143,14 @@ img { max-width: 100%; display: block; }
 .btn-primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border: none;
-  box-shadow: 0 4px 14px rgba(11,91,211,0.25);
+  box-shadow: 0 4px 14px rgba(11, 91, 211, 0.25);
   transition: all 0.2s;
 }
 
 /* Effet hover : ombre plus forte + légère élévation */
 .btn-primary:hover {
   background: linear-gradient(135deg, #0a52c4 0%, #083d91 100%);
-  box-shadow: 0 6px 20px rgba(11,91,211,0.35);
+  box-shadow: 0 6px 20px rgba(11, 91, 211, 0.35);
   transform: translateY(-1px);
 }
 
@@ -1038,28 +1165,37 @@ img { max-width: 100%; display: block; }
 
 /* Conteneur de la section héro */
 .hero-section {
-  position: relative;          /* Pour positionner vidéo et overlay par-dessus */
-  overflow: hidden;            /* Cache les débords de la vidéo */
-  min-height: 520px;           /* Hauteur minimale sur desktop */
+  position: relative;
+  /* Pour positionner vidéo et overlay par-dessus */
+  overflow: hidden;
+  /* Cache les débords de la vidéo */
+  min-height: 520px;
+  /* Hauteur minimale sur desktop */
   padding: 60px 0;
 }
 
 /* Vidéo de fond : plein écran, couvre tout */
 .hero-video {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  z-index: 0;                 /* Derrière l'overlay */
+  z-index: 0;
+  /* Derrière l'overlay */
 }
 
 /* Superposition bleue sur la vidéo pour la lisibilité du texte */
 .hero-overlay {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg, rgba(126, 167, 243, 0.85) 0%, rgba(11,91,211,0.70) 100%);
-  z-index: 1;                 /* Entre la vidéo et le contenu */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(126, 167, 243, 0.85) 0%, rgba(11, 91, 211, 0.70) 100%);
+  z-index: 1;
+  /* Entre la vidéo et le contenu */
 }
 
 /* Contenu texte au-dessus de l'overlay */
@@ -1073,11 +1209,15 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255,255,255,0.15);      /* Blanc très transparent */
-  backdrop-filter: blur(8px);               /* Flou derrière */
+  background: rgba(255, 255, 255, 0.15);
+  /* Blanc très transparent */
+  backdrop-filter: blur(8px);
+  /* Flou derrière */
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.25); /* Bordure blanche légère */
-  border-radius: 999px;                     /* Forme pilule */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  /* Bordure blanche légère */
+  border-radius: 999px;
+  /* Forme pilule */
   padding: 6px 16px;
   font-size: 0.72rem;
   font-weight: 700;
@@ -1088,7 +1228,8 @@ img { max-width: 100%; display: block; }
 
 /* Titre principal du hero : blanc, gras, responsive */
 .hero-title {
-  font-size: clamp(2rem, 4vw, 3rem);        /* Responsive : 2rem mobile → 3rem desktop */
+  font-size: clamp(2rem, 4vw, 3rem);
+  /* Responsive : 2rem mobile → 3rem desktop */
   line-height: 1.1;
   font-weight: 800;
   color: #ffffff;
@@ -1099,7 +1240,7 @@ img { max-width: 100%; display: block; }
 .hero-subtitle {
   font-size: 1rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 500px;
   margin-bottom: 24px;
 }
@@ -1116,8 +1257,9 @@ img { max-width: 100%; display: block; }
 /* Conteneur du carrousel : arrondi + ombre forte */
 #heroCarousel {
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-  overflow: hidden;            /* Masque les débords aux coins arrondis */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  /* Masque les débords aux coins arrondis */
 }
 
 /* Images du carrousel : hauteur fixe, couverture */
@@ -1132,7 +1274,7 @@ img { max-width: 100%; display: block; }
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   top: 50%;
   bottom: auto;
   transform: translateY(-50%);
@@ -1165,12 +1307,14 @@ img { max-width: 100%; display: block; }
 
 /* Conteneur de l'estimateur */
 .estimator-wrapper {
-  background: rgba(255,255,255,0.95);       /* Blanc presque opaque */
-  backdrop-filter: blur(10px);               /* Flou derrière */
+  background: rgba(255, 255, 255, 0.95);
+  /* Blanc presque opaque */
+  backdrop-filter: blur(10px);
+  /* Flou derrière */
   border-radius: var(--radius-lg);
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.5);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Titre "ESTIMATION EXPRESS" */
@@ -1241,7 +1385,8 @@ img { max-width: 100%; display: block; }
 
   border: 1px solid var(--border-light);
   border-radius: 10px;
-  padding: 50px 20px;          /* Grand padding en haut pour l'image */
+  padding: 50px 20px;
+  /* Grand padding en haut pour l'image */
   height: 100%;
   transition: all 0.3s;
   display: flex;
@@ -1280,7 +1425,8 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted);
   font-size: 0.85rem;
   line-height: 1.6;
-  flex-grow: 1;                /* Prend tout l'espace disponible */
+  flex-grow: 1;
+  /* Prend tout l'espace disponible */
   margin-bottom: 16px;
 }
 
@@ -1432,7 +1578,7 @@ img { max-width: 100%; display: block; }
   font-size: 0.75rem;
   padding-top: 14px;
   margin-top: 14px;
-  border-top: 1px solid rgba(11,27,65,0.08);
+  border-top: 1px solid rgba(11, 27, 65, 0.08);
 }
 
 
@@ -1444,20 +1590,32 @@ img { max-width: 100%; display: block; }
    ================================================================ */
 
 /* Texte très petit (0.72rem) */
-.extra-small, .text-xs { font-size: 0.72rem; }
+.extra-small,
+.text-xs {
+  font-size: 0.72rem;
+}
 
 /* Marge négative gauche pour chevaucher les avatars */
-.ms-n2 { margin-left: -0.5rem; }
+.ms-n2 {
+  margin-left: -0.5rem;
+}
 
 /* Curseur main au survol */
-.cursor-pointer { cursor: pointer; }
+.cursor-pointer {
+  cursor: pointer;
+}
 
 /* Avatar rond (image de profil) */
-.avatar { width: 40px; height: 40px; object-fit: cover; }
+.avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
 
 /* Badge "+4k" à côté des avatars */
 .avatar-badge {
-  width: 36px; height: 36px;
+  width: 36px;
+  height: 36px;
   font-size: 0.65rem;
   background: var(--primary-light);
   color: var(--primary);
@@ -1489,9 +1647,11 @@ img { max-width: 100%; display: block; }
 
 /* Cercle de l'étape (numéro ou icône) */
 .step-icon {
-  width: 38px; height: 38px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background: #e9eef8;         /* Gris-bleu clair (état inactif) */
+  background: #e9eef8;
+  /* Gris-bleu clair (état inactif) */
   color: #7d8ca6;
   display: flex;
   align-items: center;
@@ -1505,7 +1665,7 @@ img { max-width: 100%; display: block; }
 .step-item.active .step-icon {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #fff;
-  box-shadow: 0 4px 14px rgba(11,91,211,0.3);
+  box-shadow: 0 4px 14px rgba(11, 91, 211, 0.3);
 }
 
 /* Label sous l'étape (ex: "Diagnostic") */
@@ -1513,17 +1673,21 @@ img { max-width: 100%; display: block; }
   font-size: 0.7rem;
   font-weight: 600;
   color: #7d8ca6;
-  white-space: nowrap;          /* Empêche le retour à la ligne */
+  white-space: nowrap;
+  /* Empêche le retour à la ligne */
 }
 
 /* Label de l'étape active : texte foncé */
-.step-item.active .step-label { color: var(--text-dark); }
+.step-item.active .step-label {
+  color: var(--text-dark);
+}
 
 /* Ligne de connexion entre deux étapes */
 .step-line {
   flex: 1;
   height: 2px;
-  background: #dde4f0;         /* Gris clair (non franchi) */
+  background: #dde4f0;
+  /* Gris clair (non franchi) */
   margin-bottom: 20px;
   z-index: 1;
 }
@@ -1572,26 +1736,55 @@ img { max-width: 100%; display: block; }
 
 /* Animation 1 : Zoom + Fondu (scale de 0.85 à 1) */
 @keyframes animZoom {
-  from { opacity: 0; transform: scale(0.85); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Animation 2 : Glissement par la droite + Fondu */
 @keyframes animSlideRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Animation 3 : Glissement par le bas + Fondu */
 @keyframes animSlideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Application des animations aux images du carrousel */
-.carousel-item.anim-zoom img { animation: animZoom 0.7s ease-out forwards; }
-.carousel-item.anim-slide-right img { animation: animSlideRight 0.7s ease-out forwards; }
-.carousel-item.anim-slide-up img { animation: animSlideUp 0.7s ease-out forwards; }
+.carousel-item.anim-zoom img {
+  animation: animZoom 0.7s ease-out forwards;
+}
+
+.carousel-item.anim-slide-right img {
+  animation: animSlideRight 0.7s ease-out forwards;
+}
+
+.carousel-item.anim-slide-up img {
+  animation: animSlideUp 0.7s ease-out forwards;
+}
 
 
 /* ================================================================
@@ -1616,10 +1809,14 @@ img { max-width: 100%; display: block; }
   }
 
   /* Lignes de stepper sans marge en bas */
-  .step-line { margin-bottom: 0; }
+  .step-line {
+    margin-bottom: 0;
+  }
 
   /* Carte panier : position statique (pas de sticky) */
-  .cart-card { position: static; }
+  .cart-card {
+    position: static;
+  }
 }
 
 
@@ -1751,7 +1948,8 @@ img { max-width: 100%; display: block; }
   }
 
   /* Formulaires : taille de police augmentée pour touch */
-  .form-control, .form-select {
+  .form-control,
+  .form-select {
     font-size: 0.95rem !important;
   }
 
@@ -1779,7 +1977,8 @@ img { max-width: 100%; display: block; }
   }
 
   /* Grilles : espacement encore plus serré */
-  .row.g-4, .row.g-3 {
+  .row.g-4,
+  .row.g-3 {
     --bs-gutter-x: 12px;
   }
 
@@ -1795,7 +1994,10 @@ img { max-width: 100%; display: block; }
   }
 
   /* Stepper : labels et icons réduits */
-  .step-label { font-size: 0.6rem; }
+  .step-label {
+    font-size: 0.6rem;
+  }
+
   .step-icon {
     width: 30px;
     height: 30px;
@@ -1803,7 +2005,9 @@ img { max-width: 100%; display: block; }
   }
 
   /* Boutons : taille de police réduite */
-  .btn { font-size: 0.88rem; }
+  .btn {
+    font-size: 0.88rem;
+  }
 }
 
 
@@ -1815,9 +2019,17 @@ img { max-width: 100%; display: block; }
    ================================================================ */
 
 @keyframes floatUpDown {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .hero-float {
@@ -1833,7 +2045,7 @@ img { max-width: 100%; display: block; }
    ================================================================ */
 
 .hero-blue {
-  background: linear-gradient(135deg, rgba(73, 127, 226, 0.85) 0%, rgba(11,91,211,0.70) 100%);
+  background: linear-gradient(135deg, rgba(73, 127, 226, 0.85) 0%, rgba(11, 91, 211, 0.70) 100%);
   color: #fff;
 }
 
@@ -1858,18 +2070,18 @@ img { max-width: 100%; display: block; }
 .hero-blue span,
 .hero-blue .small,
 .hero-blue .extra-small {
-  color: rgba(255,255,255,0.85) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 .hero-blue .badge.bg-primary-subtle {
-  background: rgba(255,255,255,0.2) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hero-blue .btn-outline-secondary {
   color: #fff;
-  border-color: rgba(255,255,255,0.5);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .hero-blue .btn-outline-secondary:hover {
@@ -1883,14 +2095,14 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-blue .avatar-badge {
-  background: rgba(255,255,255,0.2) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
   color: #fff !important;
 }
 
 .hero-blue .btn-primary {
   background: #fff;
   color: var(--primary);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .hero-blue .btn-primary:hover {
@@ -1921,7 +2133,10 @@ img { max-width: 100%; display: block; }
   font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
-  box-shadow: 0 2px 12px rgba(11,27,65,0.06);     /* Ombre légère en bas */
-/* Conteneur principal de la navbar */
-   - Logo à gauche, liens au centre, boutons à droite
 
+box-shadow: 0 2px 12px rgba(11, 27, 65, 0.06);
+/* Ombre légère en bas */
+/* Conteneur principal de la navbar */
+- Logo à gauche,
+liens au centre,
+boutons à droite
